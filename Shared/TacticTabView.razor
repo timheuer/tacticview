@@ -1,0 +1,38 @@
+﻿<RadzenTabs>
+    <Tabs>
+        <RadzenTabsItem Text="AspNetCore">
+            <GridList OrgName="aspnet" RepoName="AspNetCore" Label="@Label" />
+        </RadzenTabsItem>
+        <RadzenTabsItem Text="CoreCLR">
+            <GridList OrgName="dotnet" RepoName="CoreCLR" Label="@Label" />
+        </RadzenTabsItem>
+        <RadzenTabsItem Text="CoreFX">
+            <GridList OrgName="dotnet" RepoName="Corefx" Label="@Label" />
+        </RadzenTabsItem>
+        <RadzenTabsItem Text="Core Setup">
+            <GridList OrgName="dotnet" RepoName="core-setup" Label="@Label" />
+        </RadzenTabsItem>
+        <RadzenTabsItem Text="CLI">
+            <GridList OrgName="dotnet" RepoName="cli" Label="@Label" />
+        </RadzenTabsItem>
+        <RadzenTabsItem Text="SDK">
+            <GridList OrgName="dotnet" RepoName="sdk" Label="@Label" />
+        </RadzenTabsItem>
+        <RadzenTabsItem Text="EF">
+            <GridList OrgName="aspnet" RepoName="EntityFrameworkCore" Label="@Label" />
+        </RadzenTabsItem>
+        <RadzenTabsItem Text="WCF">
+            <GridList OrgName="dotnet" RepoName="wcf" Label="@Label" />
+        </RadzenTabsItem>
+        <RadzenTabsItem Text="WPF">
+            <GridList OrgName="dotnet" RepoName="wpf" Label="@Label" />
+        </RadzenTabsItem>
+        <RadzenTabsItem Text="WinForms">
+            <GridList OrgName="dotnet" RepoName="winforms" Label="@Label" />
+        </RadzenTabsItem>
+    </Tabs>
+</RadzenTabs>
+@code {
+    [Parameter]
+    public string Label { get; set; }
+}

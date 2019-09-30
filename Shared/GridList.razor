@@ -1,0 +1,64 @@
+﻿@using TacticView.Data
+@using Octokit
+@using TacticView.Utilitiy
+@using Humanizer
+
+@inject GitHubQueryService IssuesService
+
+@if (issues == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <RadzenGrid Data="@issues" TItem="Issue" EmptyText="@Motivator.GetMotivator()">
+        <Columns>
+            <RadzenGridColumn Width="100px" TItem="Issue" Title="ID">
+                <Template Context="data">
+                    <a target="_blank" href="@(data.PullRequest.HtmlUrl)">@(data.Number)</a>
+                </Template>
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="Issue" Title="Title">
+                <Template Context="data">
+                    <a target="_blank" href="@(data.PullRequest.HtmlUrl)">@(data.Title)</a>
+                </Template>
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="Issue" Title="Labels">
+                <Template Context="data">
+                    @foreach (var label in data.Labels)
+                    {
+                        <span class="issue-label" style="color:@Colors.GetReadableForeColorAsString(label.Color);background-color:#@label.Color">@label.Name &nbsp;</span>
+                    }
+                </Template>
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="Issue" Title="Created" Width="110px">
+                <Template Context="data">
+                    @(data.CreatedAt.Humanize())
+                </Template>
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="Issue" Title="Milestone" Width="80px">
+                <Template Context="data">
+                    @(data.Milestone?.Title)
+                </Template>
+            </RadzenGridColumn>
+        </Columns>
+    </RadzenGrid>
+}
+
+@code {
+    List<Issue> issues;
+
+    [Parameter]
+    public string OrgName { get; set; }
+
+    [Parameter]
+    public string RepoName { get; set; }
+
+    [Parameter]
+    public string Label { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        issues = await IssuesService.GetOpenPullRequestsAsIssuesAsync(OrgName, RepoName, Label);
+    }
+}

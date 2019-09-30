@@ -1,0 +1,19 @@
+﻿@using TacticView.Data
+@using Humanizer
+@using Octokit
+@using System.Runtime.InteropServices
+@using System.Reflection
+
+@inject GitHubQueryService IssuesService
+
+<span style="font-size:.75rem">@($"Limits: {GitHubQueryService.REQUESTS_LEFT}/{GitHubQueryService.REQUESTS_PER_HOUR} resetting {GitHubQueryService.LIMIT_RESET?.Humanize()} -- {RuntimeInformation.FrameworkDescription} on {RuntimeInformation.OSDescription}")</span>
+
+@code {
+    RateLimit limits;
+    string FrameworkInfo;
+
+    protected override async Task OnInitializedAsync()
+    {
+        limits = await IssuesService.GetApiInfo();        
+    }
+}

@@ -1,0 +1,17 @@
+﻿@inherits LayoutComponentBase
+
+<div class="sidebar">
+    <NavMenu />
+</div>
+
+<div class="main">
+
+    <div class="content px-4">
+        @Body
+    </div>
+
+    <div class="col-12" style="bottom:0;position:fixed;">
+        <DebugInfo />
+    </div>
+
+</div>
