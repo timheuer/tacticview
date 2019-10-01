@@ -7,42 +7,43 @@
 
 @if (issues == null)
 {
-    <p><em>Loading...</em></p>
+<p><em>Searching the interwebs...</em></p>
 }
 else
 {
-    <RadzenGrid Data="@issues" TItem="Issue" EmptyText="@Motivator.GetMotivator()">
-        <Columns>
-            <RadzenGridColumn Width="100px" TItem="Issue" Title="ID">
-                <Template Context="data">
-                    <a target="_blank" href="@(data.PullRequest.HtmlUrl)">@(data.Number)</a>
-                </Template>
-            </RadzenGridColumn>
-            <RadzenGridColumn TItem="Issue" Title="Title">
-                <Template Context="data">
-                    <a target="_blank" href="@(data.PullRequest.HtmlUrl)">@(data.Title)</a>
-                </Template>
-            </RadzenGridColumn>
-            <RadzenGridColumn TItem="Issue" Title="Labels">
-                <Template Context="data">
-                    @foreach (var label in data.Labels)
+<RadzenGrid Data="@issues" TItem="Issue" EmptyText="@Motivator.GetMotivator()" AllowFiltering="true">
+    <Columns>
+        <RadzenGridColumn Width="90px" TItem="Issue" Title="ID" SortProperty="Number">
+            <Template Context="data">
+                <GitMergeVisual State="@(data.State.StringValue)" />
+                <a style="font-size:16px" target="_blank" href="@(data.PullRequest.HtmlUrl)">@(data.Number)</a>
+            </Template>
+        </RadzenGridColumn>
+        <RadzenGridColumn TItem="Issue" Title="Title" FilterProperty="Title">
+            <Template Context="data">
+                <a style="font-size:16px" target="_blank" href="@(data.PullRequest.HtmlUrl)">@(data.Title)</a>
+            </Template>
+        </RadzenGridColumn>
+        <RadzenGridColumn TItem="Issue" Title="Labels">
+            <Template Context="data">
+                @foreach (var label in data.Labels)
                     {
-                        <span class="issue-label" style="color:@Colors.GetReadableForeColorAsString(label.Color);background-color:#@label.Color">@label.Name &nbsp;</span>
+                <span class="issue-label" style="color:@Colors.GetReadableForeColorAsString(label.Color);background-color:#@label.Color">@label.Name &nbsp;</span>
                     }
-                </Template>
-            </RadzenGridColumn>
-            <RadzenGridColumn TItem="Issue" Title="Created" Width="110px">
-                <Template Context="data">
-                    @(data.CreatedAt.Humanize())
-                </Template>
-            </RadzenGridColumn>
-            <RadzenGridColumn TItem="Issue" Title="Milestone" Width="80px">
-                <Template Context="data">
-                    @(data.Milestone?.Title)
-                </Template>
-            </RadzenGridColumn>
-        </Columns>
-    </RadzenGrid>
+            </Template>
+        </RadzenGridColumn>
+        <RadzenGridColumn TItem="Issue" Title="Created" Width="110px">
+            <Template Context="data">
+                <span style="font-size:16px">@(data.CreatedAt.Humanize())</span>
+            </Template>
+        </RadzenGridColumn>
+        <RadzenGridColumn TItem="Issue" Title="Milestone" Width="80px" FilterProperty="Milestone.Title">
+            <Template Context="data">
+                <span style="font-size:16px">@(data.Milestone?.Title)</span>
+            </Template>
+        </RadzenGridColumn>
+    </Columns>
+</RadzenGrid>
 }
 
 @code {
@@ -57,8 +58,10 @@ else
     [Parameter]
     public string Label { get; set; }
 
+    [Parameter] public bool IsOpen { get; set; }
+
     protected override async Task OnInitializedAsync()
     {
-        issues = await IssuesService.GetOpenPullRequestsAsIssuesAsync(OrgName, RepoName, Label);
+        issues = await IssuesService.GetPullRequestsAsIssuesAsync(OrgName, RepoName, Label, IsOpen);
     }
 }

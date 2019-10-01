@@ -1,4 +1,5 @@
 ﻿using Humanizer;
+using Microsoft.Extensions.Configuration;
 using Octokit;
 using System;
 using System.Collections.Generic;
@@ -13,10 +14,8 @@ namespace TacticView.Data
         public static int? REQUESTS_LEFT = 0;
         public static string LIMIT_RESET;
 
-        public async Task<List<Issue>> GetOpenPullRequestsAsIssuesAsync(string owner, string repo, string tag)
+        public async Task<List<Issue>> GetPullRequestsAsIssuesAsync(string owner, string repo, string tag, bool openOnly=true)
         {
-            List<Issue> issues = new List<Issue>();
-
             // create the github client
             GitHubClient client = new GitHubClient(new ProductHeaderValue(PRODUCT_HEADER));
             var basic = new Credentials(Startup.Token);
@@ -25,12 +24,13 @@ namespace TacticView.Data
             // create the request parameters
             // using the tag to search for 
             var issueRequest = new RepositoryIssueRequest();
-            issueRequest.State = ItemStateFilter.Open;
+            issueRequest.State = openOnly ? ItemStateFilter.Open : ItemStateFilter.All;
             issueRequest.Labels.Add(tag);
 
             // fetch all open pull requests
             var found = await client.Issue.GetAllForRepository(owner, repo, issueRequest);
 
+            List<Issue> issues = new List<Issue>();
             foreach (var pr in found)
             {
                 if (pr.PullRequest != null)
@@ -45,7 +45,6 @@ namespace TacticView.Data
             REQUESTS_PER_HOUR = rateLimit?.Limit;
             REQUESTS_LEFT = rateLimit?.Remaining;
             LIMIT_RESET = rateLimit?.Reset.Humanize();
-            //Console.WriteLine($"LIMIT: {REQUESTS_PER_HOUR}; LEFT: {REQUESTS_LEFT}; RESET: {LIMIT_RESET}");
 
             return issues;
         }

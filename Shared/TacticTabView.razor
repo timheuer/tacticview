@@ -1,38 +1,42 @@
 ﻿<RadzenTabs>
     <Tabs>
         <RadzenTabsItem Text="AspNetCore">
-            <GridList OrgName="aspnet" RepoName="AspNetCore" Label="@Label" />
+            <GridList OrgName="aspnet" RepoName="AspNetCore" Label="@Label" IsOpen="@IsOpenOnly" />
         </RadzenTabsItem>
         <RadzenTabsItem Text="CoreCLR">
-            <GridList OrgName="dotnet" RepoName="CoreCLR" Label="@Label" />
+            <GridList OrgName="dotnet" RepoName="CoreCLR" Label="@Label" IsOpen="@IsOpenOnly" />
         </RadzenTabsItem>
         <RadzenTabsItem Text="CoreFX">
-            <GridList OrgName="dotnet" RepoName="Corefx" Label="@Label" />
+            <GridList OrgName="dotnet" RepoName="Corefx" Label="@Label" IsOpen="@IsOpenOnly" />
         </RadzenTabsItem>
-        <RadzenTabsItem Text="Core Setup">
-            <GridList OrgName="dotnet" RepoName="core-setup" Label="@Label" />
+        <RadzenTabsItem Text="Setup">
+            <GridList OrgName="dotnet" RepoName="core-setup" Label="@Label" IsOpen="@IsOpenOnly" />
         </RadzenTabsItem>
         <RadzenTabsItem Text="CLI">
-            <GridList OrgName="dotnet" RepoName="cli" Label="@Label" />
+            <GridList OrgName="dotnet" RepoName="cli" Label="@Label" IsOpen="@IsOpenOnly" />
         </RadzenTabsItem>
         <RadzenTabsItem Text="SDK">
-            <GridList OrgName="dotnet" RepoName="sdk" Label="@Label" />
+            <GridList OrgName="dotnet" RepoName="sdk" Label="@Label" IsOpen="@IsOpenOnly" />
+        </RadzenTabsItem>
+        <RadzenTabsItem Text="MSBuild">
+            <GridList OrgName="microsoft" RepoName="msbuild" Label="@Label" IsOpen="@IsOpenOnly" />
         </RadzenTabsItem>
         <RadzenTabsItem Text="EF">
-            <GridList OrgName="aspnet" RepoName="EntityFrameworkCore" Label="@Label" />
+            <GridList OrgName="aspnet" RepoName="EntityFrameworkCore" Label="@Label" IsOpen="@IsOpenOnly" />
         </RadzenTabsItem>
         <RadzenTabsItem Text="WCF">
-            <GridList OrgName="dotnet" RepoName="wcf" Label="@Label" />
+            <GridList OrgName="dotnet" RepoName="wcf" Label="@Label" IsOpen="@IsOpenOnly" />
         </RadzenTabsItem>
         <RadzenTabsItem Text="WPF">
-            <GridList OrgName="dotnet" RepoName="wpf" Label="@Label" />
+            <GridList OrgName="dotnet" RepoName="wpf" Label="@Label" IsOpen="@IsOpenOnly" />
         </RadzenTabsItem>
         <RadzenTabsItem Text="WinForms">
-            <GridList OrgName="dotnet" RepoName="winforms" Label="@Label" />
+            <GridList OrgName="dotnet" RepoName="winforms" Label="@Label" IsOpen="@IsOpenOnly" />
         </RadzenTabsItem>
     </Tabs>
 </RadzenTabs>
 @code {
-    [Parameter]
-    public string Label { get; set; }
+    [Parameter] public string Label { get; set; }
+
+    [Parameter] public bool IsOpenOnly { get; set; } = true;
 }

@@ -16,7 +16,9 @@ namespace TacticView.Data
             "All caught up, what's next? ✌",
             "Don't you wish your inbox was this empty? 🤣🤣🤣",
             "Umm, yeah I'm gonna need those TPS reports 📃",
-            "🎯 Boom, bullseye...not really, but nothing in queue"
+            "🎯 Boom, bullseye...not really, but nothing in queue",
+            "🎉 Ta-da!  You've got nothing to see here.",
+            "You are up-to-date.  Go forth and conquer"
         };
 
         public static string GetMotivator()
