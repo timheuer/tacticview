@@ -11,7 +11,7 @@
 }
 else
 {
-<RadzenGrid Data="@issues" TItem="Issue" EmptyText="@Motivator.GetMotivator()" AllowFiltering="true">
+<RadzenGrid Data="@issues" TItem="Issue" EmptyText="@Motivator.GetMotivator()" AllowFiltering="true" FilterCaseSensitivity="Radzen.FilterCaseSensitivity.CaseInsensitive">
     <Columns>
         <RadzenGridColumn Width="90px" TItem="Issue" Title="ID" SortProperty="Number">
             <Template Context="data">
