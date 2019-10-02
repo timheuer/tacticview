@@ -6,7 +6,7 @@
 
 @inject GitHubQueryService IssuesService
 
-<span style="font-size:.75rem">@($"Limits: {GitHubQueryService.REQUESTS_LEFT}/{GitHubQueryService.REQUESTS_PER_HOUR} resetting {GitHubQueryService.LIMIT_RESET?.Humanize()} -- {RuntimeInformation.FrameworkDescription} on {RuntimeInformation.OSDescription}")</span>
+<span style="font-size:.75rem">System Info: @($"Limits: {GitHubQueryService.REQUESTS_LEFT}/{GitHubQueryService.REQUESTS_PER_HOUR} resetting {GitHubQueryService.LIMIT_RESET?.Humanize()} -- {RuntimeInformation.FrameworkDescription} on {RuntimeInformation.OSDescription}")</span>
 
 @code {
     RateLimit limits;
