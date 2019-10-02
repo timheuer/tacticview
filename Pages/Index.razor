@@ -1,7 +1,19 @@
 ﻿@page "/"
+@page "/servicing-consider"
+@page "/servicing-consider/{TabIndex}"
 
 <h1>.NET Tactics - Servicing Consider</h1>
 
 <p>Open PRs marked servicing-consider</p>
 
 <TacticTabView Label="servicing-consider" />
+
+@code
+{
+    [Parameter] public string TabIndex { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        //Console.WriteLine(TabIndex);
+    }
+}

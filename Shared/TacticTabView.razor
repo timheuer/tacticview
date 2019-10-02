@@ -1,4 +1,4 @@
-﻿<RadzenTabs>
+﻿<RadzenTabs Change="@TabChanged">
     <Tabs>
         <RadzenTabsItem Text="AspNetCore">
             <GridList OrgName="aspnet" RepoName="AspNetCore" Label="@Label" IsOpen="@IsOpenOnly" />
@@ -39,4 +39,10 @@
     [Parameter] public string Label { get; set; }
 
     [Parameter] public bool IsOpenOnly { get; set; } = true;
+
+    protected async void TabChanged(int index)
+    {
+        // write the tab to the URI
+
+    }
 }
