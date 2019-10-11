@@ -1,14 +1,10 @@
-﻿@using TacticView.Data
-@using Octokit
-@using TacticView.Utilitiy
-@using Humanizer
-
-@inject GitHubQueryService IssuesService
+﻿@inject GitHubQueryService IssuesService
 @inject TacticView.Data.AppState AppState
 
 @if (issues == null)
 {
     <p><em>Searching the interwebs...</em></p>
+    <RadzenProgressBar Mode="Radzen.ProgressBarMode.Indeterminate" ShowValue="false" Value="100"  />
 }
 else
 {
