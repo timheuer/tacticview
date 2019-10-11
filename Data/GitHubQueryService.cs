@@ -9,7 +9,6 @@ namespace TacticView.Data
 {
     public class GitHubQueryService
     {
-        const string PRODUCT_HEADER = "timheuer-microsoft-com";
         public static int? REQUESTS_PER_HOUR = 0;
         public static int? REQUESTS_LEFT = 0;
         public static string LIMIT_RESET;
@@ -17,7 +16,7 @@ namespace TacticView.Data
         public async Task<List<Issue>> GetPullRequestsAsIssuesAsync(string owner, string repo, string tag, bool openOnly=true)
         {
             // create the github client
-            GitHubClient client = new GitHubClient(new ProductHeaderValue(PRODUCT_HEADER));
+            GitHubClient client = new GitHubClient(new ProductHeaderValue(Startup.GITHUB_CLIENT_HEADER));
             var basic = new Credentials(Startup.Token);
             client.Credentials = basic;
 
@@ -52,7 +51,7 @@ namespace TacticView.Data
         public async Task<RateLimit> GetApiInfo()
         {
             // create the github client
-            GitHubClient client = new GitHubClient(new ProductHeaderValue(PRODUCT_HEADER));
+            GitHubClient client = new GitHubClient(new ProductHeaderValue(Startup.GITHUB_CLIENT_HEADER));
             var basic = new Credentials(Startup.Token);
             client.Credentials = basic;
 

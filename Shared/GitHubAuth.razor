@@ -1,0 +1,42 @@
+﻿@using TacticView.Data
+
+@inject AppState AppState
+
+@if (!IsAuthenticated)
+{
+    @*<a href="@LoginUrl" style="font-size:32px;color:white;text-align:center"><i class="fa fa-github"></i></a>*@
+    <li class="nav-item px-3">
+        <NavLink class="nav-link" href="@LoginUrl">
+            <i style="font-size:24px;color:white;" class="fa fa-github"></i>Authenticate
+        </NavLink>
+    </li>
+}
+else
+{
+    <div>LOGGED IN</div>
+}
+@code {
+
+    public string LoginUrl { get; set; }
+    public bool IsAuthenticated { get; set; }
+
+    void GetLoginUrl()
+    {
+        var client = new GitHubClient(new ProductHeaderValue(Startup.GITHUB_CLIENT_HEADER));
+        var request = new OauthLoginRequest(Startup.GITHUB_CLIENT_ID)
+        {
+            State = Guid.NewGuid().ToString(),
+            Scopes = { "repo" }
+        };
+
+        LoginUrl = client.Oauth.GetGitHubLoginUrl(request).ToString();
+    }
+
+    protected async override Task OnAfterRenderAsync(bool firstRender)
+    {
+        GetLoginUrl();
+        IsAuthenticated = await AppState.CheckIfAuthenticated();
+        StateHasChanged();
+    }
+
+}

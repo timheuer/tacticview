@@ -1,43 +1,43 @@
-﻿<RadzenTabs Change="@TabChanged">
+﻿<RadzenTabs>
     <Tabs>
         <RadzenTabsItem Text="AspNetCore">
-            <GridList OrgName="aspnet" RepoName="AspNetCore" Label="@Label" IsOpen="@IsOpenOnly" />
+            <GridList OrgName="aspnet" RepoName="AspNetCore" Label="@Label" IsOpen="@IsOpenOnly" EnableApproval="@EnableApproval" />
         </RadzenTabsItem>
         <RadzenTabsItem Text="CoreCLR">
-            <GridList OrgName="dotnet" RepoName="CoreCLR" Label="@Label" IsOpen="@IsOpenOnly" />
+            <GridList OrgName="dotnet" RepoName="CoreCLR" Label="@Label" IsOpen="@IsOpenOnly" EnableApproval="@EnableApproval" />
         </RadzenTabsItem>
         <RadzenTabsItem Text="CoreFX">
-            <GridList OrgName="dotnet" RepoName="Corefx" Label="@Label" IsOpen="@IsOpenOnly" />
+            <GridList OrgName="dotnet" RepoName="Corefx" Label="@Label" IsOpen="@IsOpenOnly" EnableApproval="@EnableApproval" />
         </RadzenTabsItem>
         <RadzenTabsItem Text="Setup">
-            <GridList OrgName="dotnet" RepoName="core-setup" Label="@Label" IsOpen="@IsOpenOnly" />
+            <GridList OrgName="dotnet" RepoName="core-setup" Label="@Label" IsOpen="@IsOpenOnly" EnableApproval="@EnableApproval" />
         </RadzenTabsItem>
         <RadzenTabsItem Text="CLI">
-            <GridList OrgName="dotnet" RepoName="cli" Label="@Label" IsOpen="@IsOpenOnly" />
+            <GridList OrgName="dotnet" RepoName="cli" Label="@Label" IsOpen="@IsOpenOnly" EnableApproval="@EnableApproval" />
         </RadzenTabsItem>
         <RadzenTabsItem Text="SDK">
-            <GridList OrgName="dotnet" RepoName="sdk" Label="@Label" IsOpen="@IsOpenOnly" />
+            <GridList OrgName="dotnet" RepoName="sdk" Label="@Label" IsOpen="@IsOpenOnly" EnableApproval="@EnableApproval" />
         </RadzenTabsItem>
         <RadzenTabsItem Text="MSBuild">
-            <GridList OrgName="microsoft" RepoName="msbuild" Label="@Label" IsOpen="@IsOpenOnly" />
+            <GridList OrgName="microsoft" RepoName="msbuild" Label="@Label" IsOpen="@IsOpenOnly" EnableApproval="@EnableApproval" />
         </RadzenTabsItem>
         <RadzenTabsItem Text="EF">
-            <GridList OrgName="aspnet" RepoName="EntityFrameworkCore" Label="@Label" IsOpen="@IsOpenOnly" />
+            <GridList OrgName="aspnet" RepoName="EntityFrameworkCore" Label="@Label" IsOpen="@IsOpenOnly" EnableApproval="@EnableApproval" />
         </RadzenTabsItem>
         <RadzenTabsItem Text="WCF">
-            <GridList OrgName="dotnet" RepoName="wcf" Label="@Label" IsOpen="@IsOpenOnly" />
+            <GridList OrgName="dotnet" RepoName="wcf" Label="@Label" IsOpen="@IsOpenOnly" EnableApproval="@EnableApproval" />
         </RadzenTabsItem>
         <RadzenTabsItem Text="WPF">
-            <GridList OrgName="dotnet" RepoName="wpf" Label="@Label" IsOpen="@IsOpenOnly" />
+            <GridList OrgName="dotnet" RepoName="wpf" Label="@Label" IsOpen="@IsOpenOnly" EnableApproval="@EnableApproval" />
         </RadzenTabsItem>
         <RadzenTabsItem Text="WinForms">
-            <GridList OrgName="dotnet" RepoName="winforms" Label="@Label" IsOpen="@IsOpenOnly" />
+            <GridList OrgName="dotnet" RepoName="winforms" Label="@Label" IsOpen="@IsOpenOnly" EnableApproval="@EnableApproval" />
         </RadzenTabsItem>
         <RadzenTabsItem Text="WebSDK">
-            <GridList OrgName="aspnet" RepoName="websdk" Label="@Label" IsOpen="@IsOpenOnly" />
+            <GridList OrgName="aspnet" RepoName="websdk" Label="@Label" IsOpen="@IsOpenOnly" EnableApproval="@EnableApproval" />
         </RadzenTabsItem>
         <RadzenTabsItem Text="Templating">
-            <GridList OrgName="dotnet" RepoName="templating" Label="@Label" IsOpen="@IsOpenOnly" />
+            <GridList OrgName="dotnet" RepoName="templating" Label="@Label" IsOpen="@IsOpenOnly" EnableApproval="@EnableApproval" />
         </RadzenTabsItem>
     </Tabs>
 </RadzenTabs>
@@ -46,8 +46,5 @@
 
     [Parameter] public bool IsOpenOnly { get; set; } = true;
 
-    protected async void TabChanged(int index)
-    {
-        await Task.Run(()=>Console.WriteLine(index));
-    }
+    [Parameter] public bool EnableApproval { get; set; } = false;
 }

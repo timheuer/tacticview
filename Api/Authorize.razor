@@ -1,0 +1,28 @@
+﻿@page "/authorize"
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
+@inject Microsoft.AspNetCore.Components.NavigationManager navManager
+
+@code {
+    protected async override Task OnAfterRenderAsync(bool firstRender)
+    {
+        var uri = navManager.ToAbsoluteUri(navManager.Uri);
+        
+        if (QueryHelpers.ParseQuery(uri.Query).TryGetValue("code", out var code))
+        {
+            // TODO: Check to verify state against expected for valid request
+            var accessCode = code.First();
+            var client = new GitHubClient(new ProductHeaderValue(Startup.GITHUB_CLIENT_HEADER));
+
+            // create the oauth token request
+            var request = new OauthTokenRequest(Startup.GITHUB_CLIENT_ID, Startup.GITHUB_CLIENT_SECRET, accessCode);
+            // TODO: Need to guard against failed oauth token request
+            var requestToken = await client.Oauth.CreateAccessToken(request);
+            var accessToken = requestToken.AccessToken;
+
+            await localStorage.SetItemAsync("token", accessToken);
+            Startup.AccessToken = accessToken;
+
+            navManager.NavigateTo("/");
+        }
+    }
+}
