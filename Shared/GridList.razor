@@ -4,7 +4,7 @@
 @if (issues == null)
 {
     <p><em>Searching the interwebs...</em></p>
-    <RadzenProgressBar Mode="Radzen.ProgressBarMode.Indeterminate" ShowValue="false" Value="100"  />
+    <RadzenProgressBar Mode="Radzen.ProgressBarMode.Indeterminate" ShowValue="false" Value="100" />
 }
 else
 {
@@ -67,9 +67,13 @@ else
 
     [Parameter] public bool EnableApproval { get; set; } = false;
 
-    protected override async Task OnInitializedAsync()
+    protected async override Task OnAfterRenderAsync(bool firstRender)
     {
-        issues = await IssuesService.GetPullRequestsAsIssuesAsync(OrgName, RepoName, Label, IsOpen);
+        if (firstRender)
+        {
+            issues = await IssuesService.GetPullRequestsAsIssuesAsync(OrgName, RepoName, Label, IsOpen);
+            StateHasChanged();
+        }
     }
 
     private async Task ApproveItem(int issueNumber)

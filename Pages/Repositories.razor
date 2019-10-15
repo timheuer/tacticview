@@ -13,7 +13,7 @@
     }
 </ul>
 @code {
-    List<Repository> repos;
+    List<Repository> repos = null;
     bool haveToken = false;
     string token = "";
 
@@ -41,7 +41,7 @@
         {
             token = await localStorage.GetItemAsync<string>("token");
             haveToken = true;
-            PopulateRepos();
+            await PopulateRepos();
         }
     }
 }
