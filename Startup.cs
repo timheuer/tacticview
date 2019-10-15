@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Octokit;
+using Radzen;
 using TacticView.Data;
 
 namespace TacticView
@@ -38,6 +39,7 @@ namespace TacticView
             services.AddSingleton<GitHubQueryService>();
             services.AddBlazoredLocalStorage();
             services.AddScoped<AppState>();
+            services.AddScoped<NotificationService>();
 
             Token = Configuration["GITHUB_TOKEN"];
             GITHUB_CLIENT_ID = Configuration["GITHUB_CLIENT_ID"];

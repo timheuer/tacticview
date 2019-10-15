@@ -1,5 +1,6 @@
 ﻿@inject GitHubQueryService IssuesService
 @inject TacticView.Data.AppState AppState
+@inject NotificationService NotificationService
 
 @if (issues == null)
 {
@@ -78,6 +79,8 @@ else
 
     private async Task ApproveItem(int issueNumber)
     {
+        NotificationService.Notify(NotificationSeverity.Warning, "Not Implemented", "Some testing still to do, not yet implemented", 2000);
+        await InvokeAsync(() => StateHasChanged());
         //Console.WriteLine(issueNumber);
 
         //var client = new GitHubClient(new ProductHeaderValue(Startup.GITHUB_CLIENT_HEADER));
