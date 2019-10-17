@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Octokit;
+using System;
 using System.Threading.Tasks;
-using Octokit;
 
 namespace TacticView.Shared
 {
