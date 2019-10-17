@@ -25,7 +25,7 @@ namespace TacticView.Data
         {
             var r = new Random();
 
-            return motivators[r.Next(0, motivators.Length - 1)];
+            return motivators[r.Next(0, motivators.Length)];
         }
     }
 }
