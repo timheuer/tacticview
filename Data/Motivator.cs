@@ -18,7 +18,12 @@ namespace TacticView.Data
             "Umm, yeah I'm gonna need those TPS reports 📃",
             "🎯 Boom, bullseye...not really, but nothing in queue",
             "🎉 Ta-da!  You've got nothing to see here.",
-            "You are up-to-date.  Go forth and conquer"
+            "You are up-to-date.  Go forth and conquer",
+            "🍠 Sweet potato! You're all done!",
+            "All done, time for 🏈 #GoHawks!",
+            "If you know of a good fish pun, let minnow...🐟 🤣",
+            "🧮 Math is hard, but it looks to me like this is empty",
+            "Method ~ of ~ failed...just kidding, you're all cleared up"
         };
 
         public static string GetMotivator()

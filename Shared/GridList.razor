@@ -81,18 +81,20 @@ else
     {
         NotificationService.Notify(NotificationSeverity.Warning, "Not Implemented", "Some testing still to do, not yet implemented", 2000);
         await InvokeAsync(() => StateHasChanged());
-        //Console.WriteLine(issueNumber);
 
         //var client = new GitHubClient(new ProductHeaderValue(Startup.GITHUB_CLIENT_HEADER));
         //var creds = new Credentials(AppState.UserToken);
         //client.Credentials = creds;
 
+        //// create the update for the tags for approval
         //var itemUpdate = new IssueUpdate();
         //itemUpdate.AddLabel("servicing-approved");
+        //itemUpdate.RemoveLabel("servicing-consider");
+
 
         //try
         //{
-        //    var x = await client.Issue.Update("dotnet", "coreclr", 27080, itemUpdate);
+        //    var x = await client.Issue.Update(OrgName, RepoName, issueNumber, itemUpdate);
         //}
         //catch (Exception ex)
         //{
