@@ -46,6 +46,37 @@ namespace TacticView.Data
             return issues;
         }
 
+        // TODO: Quick hack duplicate of previous function...refactor this garbage
+        public async Task<bool> HasIssues(string owner, string repo, string tag, bool openOnly=true)
+        {
+            var repoHasIssues = false;
+
+            // create the github client
+            GitHubClient client = new GitHubClient(new ProductHeaderValue(Startup.GITHUB_CLIENT_HEADER));
+            var basic = new Credentials(Startup.Token);
+            client.Credentials = basic;
+
+            // create the request parameters
+            // using the tag to search for 
+            var issueRequest = new RepositoryIssueRequest();
+            issueRequest.State = openOnly ? ItemStateFilter.Open : ItemStateFilter.All;
+            issueRequest.Labels.Add(tag);
+
+            // fetch all open pull requests
+            var found = await client.Issue.GetAllForRepository(owner, repo, issueRequest);
+
+            foreach (var pr in found)
+            {
+                if (pr.PullRequest != null)
+                {
+                    repoHasIssues = true;
+                    break;
+                }
+            }
+
+            return repoHasIssues;
+        }
+
         public async Task<RateLimit> GetApiInfo()
         {
             // create the github client

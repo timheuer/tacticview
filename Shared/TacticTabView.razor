@@ -1,4 +1,5 @@
-﻿<RadzenTabs>
+﻿@inject GitHubQueryService IssuesService
+<RadzenTabs>
     <Tabs>
         <RadzenTabsItem Text="AspNetCore">
             <GridList OrgName="aspnet" RepoName="AspNetCore" Label="@Label" IsOpen="@IsOpenOnly" EnableApproval="@EnableApproval" />
