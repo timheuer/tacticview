@@ -46,6 +46,32 @@ namespace TacticView.Data
             return issues;
         }
 
+        public async Task<IssueNotification> GetNotifications(string label)
+        {
+            var notifications = new IssueNotification();
+            notifications.AspNetCore = NotificationIcon(await HasIssues("aspnet", "aspnetcore", label));
+            notifications.CoreClr = NotificationIcon(await HasIssues("dotnet", "coreclr", label));
+            notifications.CoreSetup = NotificationIcon(await HasIssues("dotnet", "core-setup", label));
+            notifications.Cli = NotificationIcon(await HasIssues("dotnet", "cli", label));
+            notifications.CoreFx = NotificationIcon(await HasIssues("dotnet", "corefx", label));
+            notifications.Ef = NotificationIcon(await HasIssues("aspnet", "entityframeworkcore", label));
+            notifications.Extensions = NotificationIcon(await HasIssues("aspnet", "extensions", label));
+            notifications.MsBuild = NotificationIcon(await HasIssues("microsoft", "msbuild", label));
+            notifications.Sdk = NotificationIcon(await HasIssues("dotnet", "sdk", label));
+            notifications.Templating = NotificationIcon(await HasIssues("dotnet", "templating", label));
+            notifications.Wcf = NotificationIcon(await HasIssues("dotnet", "wcf", label));
+            notifications.WebSdk = NotificationIcon(await HasIssues("aspnet", "websdk", label));
+            notifications.WinForms = NotificationIcon(await HasIssues("dotnet", "winforms", label));
+            notifications.Wpf = NotificationIcon(await HasIssues("dotnet", "wpf", label));
+
+            return notifications;
+        }
+        private string NotificationIcon(bool hasIssues)
+        {
+            if (hasIssues) return "fiber_manual_record";
+            return string.Empty;
+        }
+
         // TODO: Quick hack duplicate of previous function...refactor this garbage
         public async Task<bool> HasIssues(string owner, string repo, string tag, bool openOnly=true)
         {
