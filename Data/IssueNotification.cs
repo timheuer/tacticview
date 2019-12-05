@@ -21,5 +21,6 @@ namespace TacticView.Data
         public string WinForms { get; set; }
         public string Templating { get; set; }
         public string WebSdk { get; set; }
+        public string AspNetCoreTooling { get; set; }
     }
 }
