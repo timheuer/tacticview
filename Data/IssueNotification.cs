@@ -8,6 +8,7 @@ namespace TacticView.Data
     public class IssueNotification
     {
         public string AspNetCore { get; set; }
+        public string AspNetCoreTooling { get; set; }
         public string CoreClr { get; set; }
         public string CoreSetup { get; set; }
         public string Extensions { get; set; }

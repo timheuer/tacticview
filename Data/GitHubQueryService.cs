@@ -11,7 +11,7 @@ namespace TacticView.Data
         public static int? REQUESTS_LEFT = 0;
         public static string LIMIT_RESET;
 
-        public async Task<List<Issue>> GetPullRequestsAsIssuesAsync(string owner, string repo, string tag, bool openOnly=true)
+        public async Task<List<Issue>> GetPullRequestsAsIssuesAsync(string owner, string repo, string tag, bool openOnly = true)
         {
             // create the github client
             GitHubClient client = new GitHubClient(new ProductHeaderValue(Startup.GITHUB_CLIENT_HEADER));
@@ -50,6 +50,7 @@ namespace TacticView.Data
         {
             var notifications = new IssueNotification();
             notifications.AspNetCore = NotificationIcon(await HasIssues("aspnet", "aspnetcore", label));
+            notifications.AspNetCoreTooling = NotificationIcon(await HasIssues("aspnet", "aspnetcore-tooling", label));
             notifications.CoreClr = NotificationIcon(await HasIssues("dotnet", "coreclr", label));
             notifications.CoreSetup = NotificationIcon(await HasIssues("dotnet", "core-setup", label));
             notifications.Cli = NotificationIcon(await HasIssues("dotnet", "cli", label));
@@ -73,7 +74,7 @@ namespace TacticView.Data
         }
 
         // TODO: Quick hack duplicate of previous function...refactor this garbage
-        public async Task<bool> HasIssues(string owner, string repo, string tag, bool openOnly=true)
+        public async Task<bool> HasIssues(string owner, string repo, string tag, bool openOnly = true)
         {
             var repoHasIssues = false;
 
