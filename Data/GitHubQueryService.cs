@@ -1,6 +1,7 @@
 ﻿using Humanizer;
 using Octokit;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace TacticView.Data
@@ -44,6 +45,42 @@ namespace TacticView.Data
             LIMIT_RESET = rateLimit?.Reset.Humanize();
 
             return issues;
+        }
+        
+        public async Task<List<OrgRepo>> GetReposWithIssues(string label)
+        {
+            var repos = await GetRepos();
+
+            foreach (var item in repos)
+            {
+                item.HasIssues = await HasIssues(item.OrgName, item.RepoName, label);
+            }
+
+            return repos;
+        }
+
+        private async Task<List<OrgRepo>> GetRepos()
+        {
+            List<OrgRepo> repos = new List<OrgRepo>();
+
+            repos.Add(new OrgRepo() { OrgName = "aspnet", RepoName = "aspnetcore", Title = "AspNetCore" });
+            repos.Add(new OrgRepo() { OrgName = "dotnet", RepoName = "coreclr", Title = "CoreCLR" });
+            repos.Add(new OrgRepo() { OrgName = "dotnet", RepoName = "corefx", Title = "CoreFX" });
+            repos.Add(new OrgRepo() { OrgName = "dotnet", RepoName = "core-setup", Title = "Setup" });
+            repos.Add(new OrgRepo() { OrgName = "dotnet", RepoName = "cli", Title = "CLI" });
+            repos.Add(new OrgRepo() { OrgName = "aspnet", RepoName = "entityframeworkcore", Title = "EF" });
+            repos.Add(new OrgRepo() { OrgName = "aspnet", RepoName = "extensions", Title = "Extensions" });
+            repos.Add(new OrgRepo() { OrgName = "microsoft", RepoName = "msbuild", Title = "MSBuild" });
+            repos.Add(new OrgRepo() { OrgName = "dotnet", RepoName = "sdk", Title = "SDK" });
+            repos.Add(new OrgRepo() { OrgName = "dotnet", RepoName = "templating", Title = "Templating" });
+            repos.Add(new OrgRepo() { OrgName = "dotnet", RepoName = "wcf", Title = "WCF" });
+            repos.Add(new OrgRepo() { OrgName = "dotnet", RepoName = "winforms", Title = "WinForms" });
+            repos.Add(new OrgRepo() { OrgName = "dotnet", RepoName = "wpf", Title = "WPF" });
+            repos.Add(new OrgRepo() { OrgName = "aspnet", RepoName = "websdk", Title = "Web SDK" });
+            repos.Add(new OrgRepo() { OrgName = "aspnet", RepoName = "aspnetcore-tooling", Title = "ASPNET Core Tooling" });
+            repos.Add(new OrgRepo() { OrgName = "dotnet", RepoName = "runtime", Title = "Runtime" });
+
+            return repos;
         }
 
         public async Task<IssueNotification> GetNotifications(string label)

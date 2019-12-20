@@ -70,11 +70,11 @@ else
 
     protected async override Task OnAfterRenderAsync(bool firstRender)
     {
-        if (firstRender)
-        {
+        //if (firstRender)
+        //{
             issues = await IssuesService.GetPullRequestsAsIssuesAsync(OrgName, RepoName, Label, IsOpen);
             StateHasChanged();
-        }
+        //}
     }
 
     private async Task ApproveItem(int issueNumber)
