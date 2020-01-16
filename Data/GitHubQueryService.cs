@@ -1,7 +1,6 @@
 ﻿using Humanizer;
 using Octokit;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace TacticView.Data
@@ -46,42 +45,33 @@ namespace TacticView.Data
 
             return issues;
         }
-        
-        public async Task<List<OrgRepo>> GetReposWithIssues(string label)
+
+        public async Task<IssueNotification> GetNotifications(string label)
         {
-            var repos = await GetRepos();
+            var notifications = new IssueNotification();
+            notifications.AspNetCore = NotificationIcon(await HasIssues("aspnet", "aspnetcore", label));
+            notifications.CoreClr = NotificationIcon(await HasIssues("dotnet", "coreclr", label));
+            notifications.CoreSetup = NotificationIcon(await HasIssues("dotnet", "core-setup", label));
+            notifications.Cli = NotificationIcon(await HasIssues("dotnet", "cli", label));
+            notifications.CoreFx = NotificationIcon(await HasIssues("dotnet", "corefx", label));
+            notifications.Ef = NotificationIcon(await HasIssues("aspnet", "entityframeworkcore", label));
+            notifications.Extensions = NotificationIcon(await HasIssues("aspnet", "extensions", label));
+            notifications.MsBuild = NotificationIcon(await HasIssues("microsoft", "msbuild", label));
+            notifications.Sdk = NotificationIcon(await HasIssues("dotnet", "sdk", label));
+            notifications.Templating = NotificationIcon(await HasIssues("dotnet", "templating", label));
+            notifications.Wcf = NotificationIcon(await HasIssues("dotnet", "wcf", label));
+            notifications.WebSdk = NotificationIcon(await HasIssues("aspnet", "websdk", label));
+            notifications.WinForms = NotificationIcon(await HasIssues("dotnet", "winforms", label));
+            notifications.Wpf = NotificationIcon(await HasIssues("dotnet", "wpf", label));
+            notifications.AspNetCoreTooling = NotificationIcon(await HasIssues("aspnet", "aspnetcore-tooling", label));
+            notifications.Runtime = NotificationIcon(await HasIssues("dotnet", "runtime", label));
 
-            foreach (var item in repos)
-            {
-                item.HasIssues = await HasIssues(item.OrgName, item.RepoName, label);
-            }
-
-            return repos;
+            return notifications;
         }
-
-        private async Task<List<OrgRepo>> GetRepos()
+        private string NotificationIcon(bool hasIssues)
         {
-            List<OrgRepo> repos = new List<OrgRepo>();
-
-            repos.Add(new OrgRepo() { OrgName = "dotnet", RepoName = "aspnetcore", Title = "AspNetCore" });
-            repos.Add(new OrgRepo() { OrgName = "dotnet", RepoName = "blazor", Title = "Blazor" });
-            repos.Add(new OrgRepo() { OrgName = "dotnet", RepoName = "coreclr", Title = "CoreCLR" });
-            repos.Add(new OrgRepo() { OrgName = "dotnet", RepoName = "corefx", Title = "CoreFX" });
-            repos.Add(new OrgRepo() { OrgName = "dotnet", RepoName = "core-setup", Title = "Setup" });
-            repos.Add(new OrgRepo() { OrgName = "dotnet", RepoName = "cli", Title = "CLI" });
-            repos.Add(new OrgRepo() { OrgName = "dotnet", RepoName = "efcore", Title = "EF" });
-            repos.Add(new OrgRepo() { OrgName = "dotnet", RepoName = "extensions", Title = "Extensions" });
-            repos.Add(new OrgRepo() { OrgName = "microsoft", RepoName = "msbuild", Title = "MSBuild" });
-            repos.Add(new OrgRepo() { OrgName = "dotnet", RepoName = "sdk", Title = "SDK" });
-            repos.Add(new OrgRepo() { OrgName = "dotnet", RepoName = "templating", Title = "Templating" });
-            repos.Add(new OrgRepo() { OrgName = "dotnet", RepoName = "wcf", Title = "WCF" });
-            repos.Add(new OrgRepo() { OrgName = "dotnet", RepoName = "winforms", Title = "WinForms" });
-            repos.Add(new OrgRepo() { OrgName = "dotnet", RepoName = "wpf", Title = "WPF" });
-            repos.Add(new OrgRepo() { OrgName = "aspnet", RepoName = "websdk", Title = "Web SDK" });
-            repos.Add(new OrgRepo() { OrgName = "dotnet", RepoName = "aspnetcore-tooling", Title = "ASPNET Core Tooling" });
-            repos.Add(new OrgRepo() { OrgName = "dotnet", RepoName = "runtime", Title = "Runtime" });
-
-            return repos;
+            if (hasIssues) return "fiber_manual_record";
+            return string.Empty;
         }
 
         // TODO: Quick hack duplicate of previous function...refactor this garbage
