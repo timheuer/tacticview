@@ -9,7 +9,7 @@
     <PackageReference Include="Blazored.LocalStorage" Version="2.1.1" />
     <PackageReference Include="Humanizer" Version="2.7.9" />
     <PackageReference Include="Octokit" Version="0.36.0" />
-    <PackageReference Include="Radzen.Blazor" Version="2.0.13" />
+    <PackageReference Include="Radzen.Blazor" Version="1.1.1" />
   </ItemGroup>
 
 </Project>

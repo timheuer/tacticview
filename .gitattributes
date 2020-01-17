@@ -1,0 +1,3 @@
+﻿# Example of a `.gitattributes` file which reclassifies `.rb` files as Java:
+*.razor linguist-language=C#
+*.cshtml linguist-language=C#
