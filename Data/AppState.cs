@@ -1,17 +1,14 @@
-﻿using Blazored.LocalStorage;
+﻿using Microsoft.AspNetCore.Components.Web.Extensions;
 using Octokit;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace TacticView.Data
 {
     public class AppState
     {
-        private ILocalStorageService _storage;
+        private ProtectedLocalStorage _storage;
 
-        public AppState(ILocalStorageService localStorage) 
+        public AppState(ProtectedLocalStorage localStorage) 
         {
             _storage = localStorage;
         }
@@ -22,10 +19,10 @@ namespace TacticView.Data
 
         public async Task<bool> CheckIfAuthenticated()
         {
-            var token = await _storage.GetItemAsync<string>("token");
-            if (!string.IsNullOrEmpty(token))
+            var token = await _storage.GetAsync<string>("token");
+            if (!string.IsNullOrEmpty(token.Value))
             {
-                UserToken = token;
+                UserToken = token.Value;
                 IsLoggedIn = true;
                 return true;
             }

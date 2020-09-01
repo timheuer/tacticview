@@ -1,16 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Blazored.LocalStorage;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Octokit;
 using Radzen;
 using TacticView.Data;
 
@@ -37,9 +29,9 @@ namespace TacticView
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<GitHubQueryService>();
-            services.AddBlazoredLocalStorage();
             services.AddScoped<AppState>();
             services.AddScoped<NotificationService>();
+            services.AddProtectedBrowserStorage();
 
             Token = Configuration["GITHUB_TOKEN"];
             GITHUB_CLIENT_ID = Configuration["GITHUB_CLIENT_ID"];

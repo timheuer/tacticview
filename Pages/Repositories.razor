@@ -1,5 +1,5 @@
 ﻿@page "/repos"
-@inject Blazored.LocalStorage.ILocalStorageService localStorage
+@inject Microsoft.AspNetCore.Components.Web.Extensions.ProtectedLocalStorage localStorage
 
 <h3>Repositories</h3>
 
@@ -39,7 +39,8 @@
     {
         if (firstRender)
         {
-            token = await localStorage.GetItemAsync<string>("token");
+            var tokenStorage = await localStorage.GetAsync<string>("token");
+            token = tokenStorage.Value;
             haveToken = true;
             await PopulateRepos();
         }

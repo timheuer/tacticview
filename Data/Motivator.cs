@@ -23,7 +23,8 @@ namespace TacticView.Data
             "All done, time for 🏈 #GoHawks!",
             "If you know of a good fish pun, let minnow...🐟 🤣",
             "🧮 Math is hard, but it looks to me like this is empty",
-            "Method ~ of ~ failed...just kidding, you're all cleared up"
+            "Method ~ of ~ failed...just kidding, you're all cleared up",
+            "The seas are clear...RELEASE THE KRAKEN 🐙"
         };
 
         public static string GetMotivator()

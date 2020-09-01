@@ -1,6 +1,6 @@
 ﻿@page "/authorize"
-@inject Blazored.LocalStorage.ILocalStorageService localStorage
 @inject Microsoft.AspNetCore.Components.NavigationManager navManager
+@inject Microsoft.AspNetCore.Components.Web.Extensions.ProtectedLocalStorage localStorage
 
 @code {
     protected async override Task OnAfterRenderAsync(bool firstRender)
@@ -19,7 +19,7 @@
             var requestToken = await client.Oauth.CreateAccessToken(request);
             var accessToken = requestToken.AccessToken;
 
-            await localStorage.SetItemAsync("token", accessToken);
+            await localStorage.SetAsync("token", accessToken);
             Startup.AccessToken = accessToken;
 
             navManager.NavigateTo("/");
