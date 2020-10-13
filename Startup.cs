@@ -31,7 +31,6 @@ namespace TacticView
             services.AddSingleton<GitHubQueryService>();
             services.AddScoped<AppState>();
             services.AddScoped<NotificationService>();
-            services.AddProtectedBrowserStorage();
 
             Token = Configuration["GITHUB_TOKEN"];
             GITHUB_CLIENT_ID = Configuration["GITHUB_CLIENT_ID"];

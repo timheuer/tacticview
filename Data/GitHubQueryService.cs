@@ -65,6 +65,7 @@ namespace TacticView.Data
             notifications.Wpf = NotificationIcon(await HasIssues("dotnet", "wpf", label));
             notifications.AspNetCoreTooling = NotificationIcon(await HasIssues("aspnet", "aspnetcore-tooling", label));
             notifications.Runtime = NotificationIcon(await HasIssues("dotnet", "runtime", label));
+            notifications.Toolset = NotificationIcon(await HasIssues("dotnet", "toolset", label));
 
             return notifications;
         }

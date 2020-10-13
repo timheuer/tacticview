@@ -15,6 +15,7 @@
         public string Wpf { get; set; }
         public string WinForms { get; set; }
         public string Templating { get; set; }
+        public string Toolset { get; set; }
         public string WebSdk { get; set; }
         public string AspNetCoreTooling { get; set; }
         public string Runtime { get; set; }

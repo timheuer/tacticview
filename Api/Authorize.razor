@@ -1,6 +1,6 @@
 ﻿@page "/authorize"
 @inject Microsoft.AspNetCore.Components.NavigationManager navManager
-@inject Microsoft.AspNetCore.Components.Web.Extensions.ProtectedLocalStorage localStorage
+@inject ProtectedLocalStorage localStorage
 
 @code {
     protected async override Task OnAfterRenderAsync(bool firstRender)

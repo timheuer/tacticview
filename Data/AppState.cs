@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Components.Web.Extensions;
+﻿using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
 using Octokit;
 using System.Threading.Tasks;
 
