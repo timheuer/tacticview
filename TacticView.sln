@@ -5,6 +5,11 @@ VisualStudioVersion = 16.0.29318.209
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TacticView", "TacticView.csproj", "{A4459C0C-2A5B-46F7-A9EF-90D721394CD7}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Workflows", "Workflows", "{E71C920B-7EDB-48E0-AC28-C55616D3F228}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\tacticview.yml = .github\workflows\tacticview.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
