@@ -1,4 +1,5 @@
 ﻿using Humanizer;
+using Microsoft.Extensions.Configuration;
 using Octokit;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,19 @@ namespace TacticView.Data
         public static int? REQUESTS_PER_HOUR = 0;
         public static int? REQUESTS_LEFT = 0;
         public static string LIMIT_RESET;
+        private List<Repo> _repos;
+
+        public GitHubQueryService(IConfiguration configuration)
+        {
+            var repos = configuration["REPO_LIST"].Split(',');
+            _repos = new List<Repo>();
+
+            foreach (var repo in repos)
+            {
+                var details = repo.Split('/');
+                _repos.Add(new Repo() { Name = details[1], Owner = details[0] });
+            }
+        }
 
         public async Task<List<Issue>> GetPullRequestsAsIssuesAsync(string owner, string repo, string tag, bool openOnly = true)
         {
@@ -52,7 +66,7 @@ namespace TacticView.Data
             var thelist = new ReposAndIssues();
 
             // query each repo for the label
-            foreach (var repo in Startup.Repos)
+            foreach (var repo in _repos)
             {
                 // if it meets the condition, add to the model and get issues
                 var issues = await GetPullRequestsAsIssuesAsync(repo.Owner, repo.Name, label, isOpenOnly);
