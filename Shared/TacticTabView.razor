@@ -10,46 +10,49 @@ else
         <Tabs>
             @foreach (var repo in Repositories)
             {
-                <RadzenTabsItem Text="@repo.Name">
-                    <table class="table table-striped">
-                        <thead class="thead-light">
+            <RadzenTabsItem Text="@repo.Name">
+                @*<div class="form-group">
+                    <input class="form-control" type="text" placeholder="Filter..." id="filterInput">
+                </div>*@
+                <table class="table table-striped">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col" width="90">ID</th>
+                            <th scope="col">Title</th>
+                            <th scope="col" width="80">Milestone</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dataTable">
+                        <Virtualize Items="repo.Issues" Context="item">
                             <tr>
-                                <th scope="col" width="90">ID</th>
-                                <th scope="col">Title</th>
-                                <th scope="col" width="80">Milestone</th>
+                                <th scope="row">
+                                    <GitMergeVisual State="@(item.State.StringValue)" />
+                                    <a target="_blank" href="@(item.PullRequest.HtmlUrl)">@(item.Number)</a>
+                                </th>
+                                <td>
+                                    <a class="gh-issue-title" href="@item.PullRequest.HtmlUrl" target="_blank">@item.Title</a>
+                                    <span>
+                                        @foreach (var label in item.Labels)
+                                        {
+                                            <span class="gh-label" style="color:@Colors.GetReadableForeColorAsString(label.Color);background-color:#@label.Color">@label.Name</span>
+                                        }
+                                    </span>
+                                    <div class="gh-details-cell">
+                                        @repo.Owner/@repo.Name#@item.Number @item.CreatedAt.Humanize() by @item.User.Login
+
+                                        @if (item.Milestone != null)
+                                        {
+                                            <span class="ml-2 mr-1 oi oi-signpost text-muted" aria-hidden="true"></span>@item.Milestone.Title
+                                        }
+                                    </div>
+                                </td>
+                                <td>@item.Milestone?.Title</td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            <Virtualize Items="repo.Issues" Context="item">
-                                <tr>
-                                    <th scope="row">
-                                        <GitMergeVisual State="@(item.State.StringValue)" />
-                                        <a target="_blank" href="@(item.PullRequest.HtmlUrl)">@(item.Number)</a>
-                                    </th>
-                                    <td>
-                                        <a class="gh-issue-title" href="@item.PullRequest.HtmlUrl" target="_blank">@item.Title</a>
-                                        <span>
-                                            @foreach (var label in item.Labels)
-                                            {
-                                                <span class="gh-label" style="color:@Colors.GetReadableForeColorAsString(label.Color);background-color:#@label.Color">@label.Name</span>
-                                            }
-                                        </span>
-                                        <div class="gh-details-cell">
-                                            @repo.Owner/@repo.Name#@item.Number @item.CreatedAt.Humanize() by @item.User.Login
+                        </Virtualize>
+                    </tbody>
+                </table>
 
-                                            @if (item.Milestone != null)
-                                            {
-                                                <span class="ml-2 mr-1 oi oi-signpost text-muted" aria-hidden="true"></span>@item.Milestone.Title
-                                            }
-                                        </div>
-                                    </td>
-                                    <td>@item.Milestone?.Title</td>
-                                </tr>
-                            </Virtualize>
-                        </tbody>
-                    </table>
-
-                </RadzenTabsItem>
+            </RadzenTabsItem>
             }
         </Tabs>
     </RadzenTabs>
