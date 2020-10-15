@@ -175,3 +175,21 @@ app {
         display: block;
     }
 }
+.gh-label {
+    padding: 0 7px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 18px;
+    border-radius: 2em;
+    border: 1px solid transparent;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 5px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+.gh-details-cell {
+    margin-top: 2px;
+    line-height: 1.25 !important;
+    font-size: 12px !important;
+    color: #586069 !important;
+}

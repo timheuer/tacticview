@@ -28,13 +28,14 @@ else
             <RadzenGridColumn TItem="Issue" Title="Title" FilterProperty="Title">
                 <Template Context="data">
                     <a style="font-size:16px" target="_blank" href="@(data.PullRequest.HtmlUrl)">@(data.Title)</a>
+                    <div class="gh-details-cell">@(data.Repository.Url)#(@data.Number)</div>
                 </Template>
             </RadzenGridColumn>
             <RadzenGridColumn TItem="Issue" Title="Labels">
                 <Template Context="data">
                     @foreach (var label in data.Labels)
                     {
-                        <span class="issue-label" style="color:@Colors.GetReadableForeColorAsString(label.Color);background-color:#@label.Color">@label.Name &nbsp;</span>
+                        <span class="gh-label" style="color:@Colors.GetReadableForeColorAsString(label.Color);background-color:#@label.Color">@label.Name</span>
                     }
                 </Template>
             </RadzenGridColumn>

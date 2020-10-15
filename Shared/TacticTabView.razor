@@ -1,59 +1,59 @@
 ﻿@inject GitHubQueryService IssuesService
-<RadzenTabs>
-    <Tabs>
-        <RadzenTabsItem Text="AspNetCore" Icon="@notifications.AspNetCore">
-            <GridList OrgName="aspnet" RepoName="AspNetCore" Label="@Label" IsOpen="@IsOpenOnly" EnableApproval="@EnableApproval" />
-        </RadzenTabsItem>
-        <RadzenTabsItem Text="AspNetCore-Tooling" Icon="@notifications.AspNetCoreTooling">
-            <GridList OrgName="aspnet" RepoName="AspNetCore-Tooling" Label="@Label" IsOpen="@IsOpenOnly" EnableApproval="@EnableApproval" />
-        </RadzenTabsItem>
-        <RadzenTabsItem Text="Extensions" Icon="@notifications.Extensions">
-            <GridList OrgName="aspnet" RepoName="Extensions" Label="@Label" IsOpen="@IsOpenOnly" EnableApproval="@EnableApproval" />
-        </RadzenTabsItem>
-        <RadzenTabsItem Text="Runtime" Icon="@notifications.Runtime">
-            <GridList OrgName="dotnet" RepoName="runtime" Label="@Label" IsOpen="@IsOpenOnly" EnableApproval="@EnableApproval" />
-        </RadzenTabsItem>
-        <RadzenTabsItem Text="CoreCLR" Icon="@notifications.CoreClr">
-            <GridList OrgName="dotnet" RepoName="CoreCLR" Label="@Label" IsOpen="@IsOpenOnly" EnableApproval="@EnableApproval" />
-        </RadzenTabsItem>
-        <RadzenTabsItem Text="CoreFX" Icon="@notifications.CoreFx">
-            <GridList OrgName="dotnet" RepoName="Corefx" Label="@Label" IsOpen="@IsOpenOnly" EnableApproval="@EnableApproval" />
-        </RadzenTabsItem>
-        <RadzenTabsItem Text="Setup" Icon="@notifications.CoreSetup">
-            <GridList OrgName="dotnet" RepoName="core-setup" Label="@Label" IsOpen="@IsOpenOnly" EnableApproval="@EnableApproval" />
-        </RadzenTabsItem>
-        <RadzenTabsItem Text="CLI" Icon="@notifications.Cli">
-            <GridList OrgName="dotnet" RepoName="cli" Label="@Label" IsOpen="@IsOpenOnly" EnableApproval="@EnableApproval" />
-        </RadzenTabsItem>
-        <RadzenTabsItem Text="SDK" Icon="@notifications.Sdk">
-            <GridList OrgName="dotnet" RepoName="sdk" Label="@Label" IsOpen="@IsOpenOnly" EnableApproval="@EnableApproval" />
-        </RadzenTabsItem>
-        <RadzenTabsItem Text="MSBuild" Icon="@notifications.MsBuild">
-            <GridList OrgName="microsoft" RepoName="msbuild" Label="@Label" IsOpen="@IsOpenOnly" EnableApproval="@EnableApproval" />
-        </RadzenTabsItem>
-        <RadzenTabsItem Text="EF" Icon="@notifications.Ef">
-            <GridList OrgName="aspnet" RepoName="EntityFrameworkCore" Label="@Label" IsOpen="@IsOpenOnly" EnableApproval="@EnableApproval" />
-        </RadzenTabsItem>
-        <RadzenTabsItem Text="WCF" Icon="@notifications.Wcf">
-            <GridList OrgName="dotnet" RepoName="wcf" Label="@Label" IsOpen="@IsOpenOnly" EnableApproval="@EnableApproval" />
-        </RadzenTabsItem>
-        <RadzenTabsItem Text="WPF" Icon="@notifications.Wpf">
-            <GridList OrgName="dotnet" RepoName="wpf" Label="@Label" IsOpen="@IsOpenOnly" EnableApproval="@EnableApproval" />
-        </RadzenTabsItem>
-        <RadzenTabsItem Text="WinForms" Icon="@notifications.WinForms">
-            <GridList OrgName="dotnet" RepoName="winforms" Label="@Label" IsOpen="@IsOpenOnly" EnableApproval="@EnableApproval" />
-        </RadzenTabsItem>
-        <RadzenTabsItem Text="WebSDK" Icon="@notifications.WebSdk">
-            <GridList OrgName="aspnet" RepoName="websdk" Label="@Label" IsOpen="@IsOpenOnly" EnableApproval="@EnableApproval" />
-        </RadzenTabsItem>
-        <RadzenTabsItem Text="Templating" Icon="@notifications.Templating">
-            <GridList OrgName="dotnet" RepoName="templating" Label="@Label" IsOpen="@IsOpenOnly" EnableApproval="@EnableApproval" />
-        </RadzenTabsItem>
-        <RadzenTabsItem Text="Toolset" Icon="@notifications.Toolset">
-            <GridList OrgName="dotnet" RepoName="toolset" Label="@Label" IsOpen="@IsOpenOnly" EnableApproval="@EnableApproval" />
-        </RadzenTabsItem>
-    </Tabs>
-</RadzenTabs>
+@if (Repositories == null)
+{
+    <p><em>Searching the interwebs...</em></p>
+    <RadzenProgressBar Mode="Radzen.ProgressBarMode.Indeterminate" ShowValue="false" Value="100" />
+}
+else
+{
+    <RadzenTabs>
+        <Tabs>
+            @foreach (var repo in Repositories)
+            {
+                <RadzenTabsItem Text="@repo.Name">
+                    <table class="table table-striped">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col" width="90">ID</th>
+                                <th scope="col">Title</th>
+                                <th scope="col" width="80">Milestone</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <Virtualize Items="repo.Issues" Context="item">
+                                <tr>
+                                    <th scope="row">
+                                        <GitMergeVisual State="@(item.State.StringValue)" />
+                                        <a target="_blank" href="@(item.PullRequest.HtmlUrl)">@(item.Number)</a>
+                                    </th>
+                                    <td>
+                                        <a class="gh-issue-title" href="@item.PullRequest.HtmlUrl" target="_blank">@item.Title</a>
+                                        <span>
+                                            @foreach (var label in item.Labels)
+                                            {
+                                                <span class="gh-label" style="color:@Colors.GetReadableForeColorAsString(label.Color);background-color:#@label.Color">@label.Name</span>
+                                            }
+                                        </span>
+                                        <div class="gh-details-cell">
+                                            @repo.Owner/@repo.Name#@item.Number @item.CreatedAt.Humanize() by @item.User.Login
+
+                                            @if (item.Milestone != null)
+                                            {
+                                                <span class="ml-2 mr-1 oi oi-signpost text-muted" aria-hidden="true"></span>@item.Milestone.Title
+                                            }
+                                        </div>
+                                    </td>
+                                    <td>@item.Milestone?.Title</td>
+                                </tr>
+                            </Virtualize>
+                        </tbody>
+                    </table>
+
+                </RadzenTabsItem>
+            }
+        </Tabs>
+    </RadzenTabs>
+}
 @code {
     [Parameter] public string Label { get; set; }
 
@@ -61,11 +61,14 @@
 
     [Parameter] public bool EnableApproval { get; set; } = false;
 
-    IssueNotification notifications = new IssueNotification();
+    public List<TriageRepository> Repositories { get; set; }
 
-    protected async override Task OnInitializedAsync()
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        notifications = await IssuesService.GetNotifications(Label);
-        StateHasChanged();   
+        if (firstRender)
+        {
+            Repositories = await IssuesService.GetReposAndIssuesAsync(Label, IsOpenOnly);
+            StateHasChanged();
+        }
     }
 }
