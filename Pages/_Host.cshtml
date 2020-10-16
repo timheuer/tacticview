@@ -16,9 +16,6 @@
     <link rel="shortcut icon" href="~/favicon.png" />
     <link rel="stylesheet" href="_content/Radzen.Blazor/css/default.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="_content/Radzen.Blazor/Radzen.Blazor.js"></script>
     <style type="text/css">
         .ui-cell-data {
@@ -124,16 +121,5 @@
     </div>
 
     <script src="_framework/blazor.server.js"></script>
-    <script>
-        $(document).ready(function () {
-            $("#filterInput").on("keyup", function () {
-                var value = $(this).val().toLowerCase();
-                console.log(value);
-                $("#dataTable tr").filter(function () {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                });
-            });
-        });
-    </script>
 </body>
 </html>
