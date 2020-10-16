@@ -82,6 +82,11 @@ else
         if (string.IsNullOrEmpty(Filter))
             return true;
 
+        if (Filter.ToLowerInvariant() == "s:open")
+        {
+            if (issue.State == ItemState.Open) return true;
+        }
+
         if (issue.Title.Contains(Filter, StringComparison.OrdinalIgnoreCase))
             return true;
 
