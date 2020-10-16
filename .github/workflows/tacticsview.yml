@@ -23,7 +23,7 @@ jobs:
     - name: Restore packages
       run: dotnet restore "${{ env.PROJECT_PATH }}" -r linux-x64
     - name: Build app
-      run: dotnet build "${{ env.PROJECT_PATH }}" --configuration ${{ env.CONFIGURATION }} --no-restore -r linux-x64
+      run: dotnet build "${{ env.PROJECT_PATH }}" --configuration ${{ env.CONFIGURATION }} --no-restore -r linux-x64 /p:SourceRevisionId=${{ github.sha }}
     - name: Test app
       run: dotnet test "${{ env.PROJECT_PATH }}" --no-build
     - name: Publish app for deploy

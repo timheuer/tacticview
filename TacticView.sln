@@ -7,6 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TacticView", "TacticView.cs
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Workflows", "Workflows", "{E71C920B-7EDB-48E0-AC28-C55616D3F228}"
 	ProjectSection(SolutionItems) = preProject
+		.github\workflows\tacticsview.yml = .github\workflows\tacticsview.yml
 		.github\workflows\tacticview.yml = .github\workflows\tacticview.yml
 	EndProjectSection
 EndProject

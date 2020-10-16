@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Radzen;
 using System.Collections.Generic;
 using TacticView.Data;
+using TacticView.Utilitiy;
 
 namespace TacticView
 {
@@ -33,6 +34,7 @@ namespace TacticView
             services.AddSingleton<GitHubQueryService>();
             services.AddScoped<AppState>();
             services.AddScoped<NotificationService>();
+            services.AddSingleton<AppInfo>();
 
             Token = Configuration["GITHUB_TOKEN"];
             GITHUB_CLIENT_ID = Configuration["GITHUB_CLIENT_ID"];
