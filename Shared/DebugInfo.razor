@@ -3,17 +3,24 @@
 @using Octokit
 @using System.Runtime.InteropServices
 @using System.Reflection
-
+@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment WebHostEnv
 @inject GitHubQueryService IssuesService
 
-<div style="font-size:.75rem">@($"Limits: {GitHubQueryService.REQUESTS_LEFT}/{GitHubQueryService.REQUESTS_PER_HOUR} resetting {GitHubQueryService.LIMIT_RESET?.Humanize()}")</div>
-<div style="font-size:.75rem">@($"{RuntimeInformation.FrameworkDescription} on {RuntimeInformation.OSDescription}")</div>
+<footer class="page-footer mt-auto">
+    <div class="container">
+        <p class="text-muted">
+            Created &amp; maintained by <a href="mailto:timheuer">Tim Heuer</a><br />
+            GitHub API Limits: @GitHubQueryService.REQUESTS_LEFT/@GitHubQueryService.REQUESTS_PER_HOUR resetting @GitHubQueryService.LIMIT_RESET?.Humanize()<br />
+            Running on @RuntimeInformation.FrameworkDescription on @RuntimeInformation.OSDescription in @WebHostEnv.EnvironmentName
+        </p>
+    </div>
+</footer>
 
 @code {
     RateLimit limits;
 
     protected override async Task OnInitializedAsync()
     {
-        limits = await IssuesService.GetApiInfo();   
+        limits = await IssuesService.GetApiInfo();
     }
 }
