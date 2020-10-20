@@ -1,3 +1,5 @@
+![Build and Deployment Status](https://github.com/timheuer/tacticview/workflows/Deploy%20to%20tacticsview/badge.svg?branch=master)
+
 # TacticView
 Dashboard view of aggregate issue queries for shiproom discussions
 
