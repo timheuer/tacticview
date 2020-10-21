@@ -6,6 +6,12 @@
 }
 else
 {
+    @if (Repositories.Count == 0)
+    {
+        <div>@Motivator.GetMotivator()</div>
+    }
+    else
+    {
     <RadzenTabs>
         <Tabs>
             @foreach (var repo in Repositories)
@@ -51,7 +57,7 @@ else
                                 </tr>
                             </ItemContent>
                             <Placeholder>
-                                <div>Loading...</div>
+                                <tr><td colspan="4">Loading...</td></tr>
                             </Placeholder>
                         </Virtualize>
                     </tbody>
@@ -61,6 +67,7 @@ else
             }
         </Tabs>
     </RadzenTabs>
+    }
 }
 @code {
     [Parameter] public string Label { get; set; }

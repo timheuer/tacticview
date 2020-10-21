@@ -1,14 +1,8 @@
 ﻿@page "/"
 @page "/servicing-consider"
-@page "/servicing-consider/{TabIndex}"
 
 <h1>Servicing Consider</h1>
 
 <p>Open PRs marked servicing-consider</p>
 
 <TacticTabView Label="servicing-consider" EnableApproval="true" />
-
-@code
-{
-    [Parameter] public string TabIndex { get; set; }
-}
