@@ -10196,12 +10196,12 @@ p-treetabletoggler {
 }
 
 .ui-tabview-nav li:hover:not(.ui-tabview-selected):not(.ui-state-disabled) {
-  background-color: #ffffff;
+  /*background-color: #ffffff;*/
   border-top-color: #479cc8;
 }
 
 .ui-tabview-nav li:hover:not(.ui-tabview-selected):not(.ui-state-disabled) a {
-  color: #ffffff;
+  /*color: #ffffff;*/
 }
 
 .ui-tabview-nav li a {
