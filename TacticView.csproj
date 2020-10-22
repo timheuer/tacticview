@@ -8,7 +8,7 @@
   <ItemGroup>
     <PackageReference Include="Humanizer" Version="2.8.26" />
     <PackageReference Include="Octokit" Version="0.48.0" />
-    <PackageReference Include="Radzen.Blazor" Version="2.15.15" />
+    <PackageReference Include="Radzen.Blazor" Version="2.15.17" />
   </ItemGroup>
 
 </Project>
