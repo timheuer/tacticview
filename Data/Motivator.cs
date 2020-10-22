@@ -29,7 +29,7 @@ namespace TacticView.Data
 
         public static string GetMotivator()
         {
-            var r = new Random();
+            Random r = new();
 
             return motivators[r.Next(0, motivators.Length)];
         }

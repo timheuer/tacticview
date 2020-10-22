@@ -12,61 +12,56 @@ else
     }
     else
     {
-    <RadzenTabs>
-        <Tabs>
-            @foreach (var repo in Repositories)
-            {
-            <RadzenTabsItem Text="@repo.Name">
-                <div class="form-group">
-                    <input class="form-control" type="text" placeholder="Filter..." @bind="Filter" @bind:event="oninput">
-                </div>
-                <table class="table table-striped">
-                    <thead class="thead-light">
-                        <tr>
-                            <th scope="col" width="90">ID</th>
-                            <th scope="col">Title</th>
-                            <th scope="col" width="80">Milestone</th>
-                        </tr>
-                    </thead>
-                    <tbody id="dataTable">
-                        <Virtualize Context="item" TItem="Issue" Items="@repo.Issues.Where(issue=>IsVisible(issue)).ToList()">
-                            <ItemContent>
+        <RadzenTabs>
+            <Tabs>
+                @foreach (var repo in Repositories)
+                {
+                    <RadzenTabsItem Text="@repo.Name">
+                        <div class="form-group">
+                            <input class="form-control" type="text" placeholder="Filter..." @bind="Filter" @bind:event="oninput">
+                        </div>
+                        <table class="table table-striped">
+                            <thead class="thead-light">
                                 <tr>
-                                    <th scope="row">
-                                        <GitMergeVisual State="@item.State.StringValue" />
-                                        <a target="_blank" href="@item.PullRequest.HtmlUrl">@item.Number</a>
-                                    </th>
-                                    <td>
-                                        <a class="gh-issue-title" href="@item.PullRequest.HtmlUrl" target="_blank">@item.Title</a>
-                                        <span>
-                                            @foreach (var label in item.Labels)
-                                            {
-                                                <span class="gh-label" style="color:@Colors.GetReadableForeColorAsString(label.Color);background-color:#@label.Color">@label.Name</span>
-                                            }
-                                        </span>
-                                        <div class="gh-details-cell">
-                                            @repo.Owner/@repo.Name#@item.Number @item.CreatedAt.Humanize() by @item.User.Login
-
-                                            @if (item.Milestone != null)
-                                            {
-                                                <span class="ml-2 mr-1 oi oi-signpost text-muted" aria-hidden="true" title="milestone"></span>@item.Milestone.Title
-                                            }
-                                        </div>
-                                    </td>
-                                    <td>@item.Milestone?.Title</td>
+                                    <th scope="col" width="90">ID</th>
+                                    <th scope="col">Title</th>
+                                    <th scope="col" width="80">Milestone</th>
                                 </tr>
-                            </ItemContent>
-                            <Placeholder>
-                                <tr><td colspan="4">Loading...</td></tr>
-                            </Placeholder>
-                        </Virtualize>
-                    </tbody>
-                </table>
+                            </thead>
+                            <tbody id="dataTable">
+                                <Virtualize Context="item" TItem="Issue" Items="@repo.Issues.Where(issue=>IsVisible(issue)).ToList()">
+                                    <tr>
+                                        <th scope="row">
+                                            <GitMergeVisual State="@item.State.StringValue" />
+                                            <a target="_blank" href="@item.PullRequest.HtmlUrl">@item.Number</a>
+                                        </th>
+                                        <td>
+                                            <a class="gh-issue-title" href="@item.PullRequest.HtmlUrl" target="_blank">@item.Title</a>
+                                            <span>
+                                                @foreach (var label in item.Labels)
+                                                {
+                                                    <span class="gh-label" style="color:@Colors.GetReadableForeColorAsString(label.Color);background-color:#@label.Color">@label.Name</span>
+                                                }
+                                            </span>
+                                            <div class="gh-details-cell">
+                                                @repo.Owner/@repo.Name#@item.Number @item.CreatedAt.Humanize() by <span class="ml-2 mr-1 oi oi-person text-muted"></span>@item.User.Login
 
-            </RadzenTabsItem>
-            }
-        </Tabs>
-    </RadzenTabs>
+                                                @if (item.Milestone != null)
+                                                {
+                                                    <span class="ml-2 mr-1 oi oi-signpost text-muted" aria-hidden="true" title="milestone"></span>@item.Milestone.Title
+                                                }
+                                            </div>
+                                        </td>
+                                        <td>@item.Milestone?.Title</td>
+                                    </tr>
+                                </Virtualize>
+                            </tbody>
+                        </table>
+
+                    </RadzenTabsItem>
+                }
+            </Tabs>
+        </RadzenTabs>
     }
 }
 @code {

@@ -35,14 +35,14 @@ namespace TacticView.Data
 
             // create the request parameters
             // using the tag to search for 
-            var issueRequest = new RepositoryIssueRequest();
+            RepositoryIssueRequest issueRequest = new();
             issueRequest.State = openOnly ? ItemStateFilter.Open : ItemStateFilter.All;
             issueRequest.Labels.Add(tag);
 
             // fetch all open pull requests
             var found = await client.Issue.GetAllForRepository(owner, repo, issueRequest);
 
-            List<Issue> issues = new List<Issue>();
+            List<Issue> issues = new();
             foreach (var pr in found)
             {
                 if (pr.PullRequest != null)
@@ -63,7 +63,7 @@ namespace TacticView.Data
 
         public async Task<List<TriageRepository>> GetReposAndIssuesAsync(string label, bool isOpenOnly = true)
         {
-            var thelist = new ReposAndIssues();
+            ReposAndIssues thelist = new();
 
             // query each repo for the label
             foreach (var repo in _repos)

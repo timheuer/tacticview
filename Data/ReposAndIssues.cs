@@ -8,7 +8,7 @@ namespace TacticView.Data
 {
     public class ReposAndIssues
     {
-        public List<TriageRepository> Repositories = new List<TriageRepository>();
+        public List<TriageRepository> Repositories = new();
     }
 
     public class TriageRepository
