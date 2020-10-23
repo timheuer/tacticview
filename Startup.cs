@@ -35,6 +35,7 @@ namespace TacticView
             services.AddScoped<AppState>();
             services.AddScoped<NotificationService>();
             services.AddSingleton<AppInfo>();
+            services.AddControllers();
 
             Token = Configuration["GITHUB_TOKEN"];
             GITHUB_CLIENT_ID = Configuration["GITHUB_CLIENT_ID"];
@@ -63,6 +64,7 @@ namespace TacticView
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapBlazorHub();
+                endpoints.MapDefaultControllerRoute();
                 endpoints.MapFallbackToPage("/_Host");
             });
         }
