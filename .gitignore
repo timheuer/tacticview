@@ -9,6 +9,7 @@
 *.user
 *.userosscache
 *.sln.docstates
+*.liveshare
 appsettings.Development.json
 
 # User-specific files (MonoDevelop/Xamarin Studio)
