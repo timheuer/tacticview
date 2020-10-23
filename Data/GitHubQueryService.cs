@@ -1,8 +1,12 @@
 ﻿using Humanizer;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Octokit;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace TacticView.Data
@@ -13,11 +17,13 @@ namespace TacticView.Data
         public static int? REQUESTS_LEFT = 0;
         public static string LIMIT_RESET;
         private List<Repo> _repos;
+        private IWebHostEnvironment _env;
 
-        public GitHubQueryService(IConfiguration configuration)
+        public GitHubQueryService(IConfiguration configuration, IWebHostEnvironment environment)
         {
             var repos = configuration["REPO_LIST"].Split(',');
             _repos = new List<Repo>();
+            _env = environment;
 
             foreach (var repo in repos)
             {
@@ -26,7 +32,7 @@ namespace TacticView.Data
             }
         }
 
-        public async Task<List<Issue>> GetPullRequestsAsIssuesAsync(string owner, string repo, string tag, bool openOnly = true)
+        public async Task<List<SimpleIssue>> GetPullRequestsAsIssuesAsync(string owner, string repo, string tag, bool openOnly = true)
         {
             // create the github client
             GitHubClient client = new GitHubClient(new ProductHeaderValue(Startup.GITHUB_CLIENT_HEADER));
@@ -42,12 +48,28 @@ namespace TacticView.Data
             // fetch all open pull requests
             var found = await client.Issue.GetAllForRepository(owner, repo, issueRequest);
 
-            List<Issue> issues = new();
+            List<SimpleIssue> issues = new();
             foreach (var pr in found)
             {
                 if (pr.PullRequest != null)
                 {
-                    issues.Add(pr);
+                    var labels = new List<Label>();
+                    foreach (var label in pr.Labels)
+                    {
+                        labels.Add(new Label() { Color = label.Color, Name = label.Name });
+                    }
+
+                    issues.Add(new SimpleIssue()
+                    {
+                        Number = pr.Number,
+                        Title = pr.Title,
+                        User = new User() { Login = pr.User.Login },
+                        Milestone = new Milestone() { Title = pr.Milestone?.Title },
+                        CreatedAt = pr.CreatedAt,
+                        State = new State() { StringValue = pr.State.StringValue },
+                        PullRequest = new PullRequest() { HtmlUrl = pr.PullRequest.HtmlUrl },
+                        Labels = labels
+                    });
                 }
             }
 
@@ -61,7 +83,7 @@ namespace TacticView.Data
             return issues;
         }
 
-        public async Task<List<TriageRepository>> GetReposAndIssuesAsync(string label, bool isOpenOnly = true)
+        public async Task GetReposAndIssuesAsync(string label, bool isOpenOnly = true)
         {
             ReposAndIssues thelist = new();
 
@@ -73,8 +95,49 @@ namespace TacticView.Data
                 if (issues.Count > 0) { thelist.Repositories.Add(new TriageRepository() { Name = repo.Name, Issues = issues, Owner = repo.Owner }); };
             }
 
-            return thelist.Repositories;
+            // write to disk
+            using (var stream = File.Create(Path.Combine(_env.ContentRootPath, $"{label}.json")))
+                await JsonSerializer.SerializeAsync(stream, thelist.Repositories, CreateOptions());
+        }
 
+        public async Task<List<TriageRepository>> GetCachedReposAndIssuesAsync(string label, bool isOpenOnly = true)
+        {
+            List<TriageRepository> thelist = new();
+            var cache = Path.Combine(_env.ContentRootPath, $"{label}.json");
+
+            // check if file exists
+            if (File.Exists(cache))
+            {
+                // load json file
+                using (var stream = File.OpenRead(Path.Combine(_env.ContentRootPath, $"{label}.json")))
+                {
+                    thelist = await JsonSerializer.DeserializeAsync<List<TriageRepository>>(stream, CreateOptions());
+                }
+            }
+            else
+            {
+                // create the cache and read it
+                await GetReposAndIssuesAsync(label, isOpenOnly);
+                using (var stream = File.OpenRead(Path.Combine(_env.ContentRootPath, $"{label}.json")))
+                {
+                    thelist = await JsonSerializer.DeserializeAsync<List<TriageRepository>>(stream, CreateOptions());
+                }
+            }
+
+            return thelist;
+        }
+
+        private static JsonSerializerOptions CreateOptions()
+        {
+            var options = new JsonSerializerOptions
+            {
+                WriteIndented = true,
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault,
+                IncludeFields = true,
+                MaxDepth = 30
+            };
+
+            return options;
         }
 
         public async Task<RateLimit> GetApiInfo()

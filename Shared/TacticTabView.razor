@@ -29,7 +29,7 @@ else
                                 </tr>
                             </thead>
                             <tbody id="dataTable">
-                                <Virtualize Context="item" TItem="Issue" Items="@repo.Issues.Where(issue=>IsVisible(issue)).ToList()">
+                                <Virtualize Context="item" TItem="SimpleIssue" Items="@repo.Issues.Where(issue=>IsVisible(issue)).ToList()">
                                     <tr>
                                         <th scope="row">
                                             <GitMergeVisual State="@item.State.StringValue" />
@@ -57,11 +57,11 @@ else
                                 </Virtualize>
                             </tbody>
                         </table>
-
                     </RadzenTabsItem>
                 }
             </Tabs>
         </RadzenTabs>
+        <span class="ml-2 mr-1 oi oi-reload" @onclick="ForceRefresh" title="Refresh cache"></span>
     }
 }
 @code {
@@ -75,19 +75,35 @@ else
 
     public string Filter { get; set; }
 
-    protected override async Task OnInitializedAsync()
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        Repositories = await IssuesService.GetReposAndIssuesAsync(Label, IsOpenOnly);
+        if (firstRender)
+        {
+            await LoadFromCache();
+        }
     }
 
-    public bool IsVisible(Issue issue)
+    public async Task ForceRefresh()
+    {
+        Repositories = null;
+        await IssuesService.GetReposAndIssuesAsync(Label, IsOpenOnly);
+        await LoadFromCache();
+    }
+
+    public async Task LoadFromCache()
+    {
+        Repositories = await IssuesService.GetCachedReposAndIssuesAsync(Label, IsOpenOnly);
+        StateHasChanged();
+    }
+
+    public bool IsVisible(SimpleIssue issue)
     {
         if (string.IsNullOrEmpty(Filter))
             return true;
 
         if (Filter.ToLowerInvariant() == "s:open")
         {
-            if (issue.State == ItemState.Open) return true;
+            if (issue.State.StringValue == "open") return true;
         }
 
         if (issue.Title.Contains(Filter, StringComparison.OrdinalIgnoreCase))
