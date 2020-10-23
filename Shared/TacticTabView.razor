@@ -109,7 +109,7 @@ else
         if (issue.Title.Contains(Filter, StringComparison.OrdinalIgnoreCase))
             return true;
 
-        if (issue.Milestone != null)
+        if (issue.Milestone != null && issue.Milestone.Title != null)
         {
             if (issue.Milestone.Title.Contains(Filter, StringComparison.OrdinalIgnoreCase))
                 return true;

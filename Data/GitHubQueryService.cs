@@ -59,17 +59,23 @@ namespace TacticView.Data
                         labels.Add(new Label() { Color = label.Color, Name = label.Name });
                     }
 
-                    issues.Add(new SimpleIssue()
+                    var issue = new SimpleIssue()
                     {
                         Number = pr.Number,
                         Title = pr.Title,
                         User = new User() { Login = pr.User.Login },
-                        Milestone = new Milestone() { Title = pr.Milestone?.Title },
                         CreatedAt = pr.CreatedAt,
                         State = new State() { StringValue = pr.State.StringValue },
                         PullRequest = new PullRequest() { HtmlUrl = pr.PullRequest.HtmlUrl },
                         Labels = labels
-                    });
+                    };
+                    if (pr.Milestone != null)
+                    {
+                        if (pr.Milestone.Title != null)
+                            issue.Milestone = new Milestone() { Title = pr.Milestone.Title };
+                    }
+
+                    issues.Add(issue);
                 }
             }
 
