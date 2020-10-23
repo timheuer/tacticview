@@ -106,14 +106,18 @@ namespace TacticView.Data
                 await JsonSerializer.SerializeAsync(stream, thelist.Repositories, CreateOptions());
         }
 
-        public async Task<List<TriageRepository>> GetCachedReposAndIssuesAsync(string label, bool isOpenOnly = true)
+        public async Task<Tuple<List<TriageRepository>,DateTimeOffset>> GetCachedReposAndIssuesAsync(string label, bool isOpenOnly = true)
         {
             List<TriageRepository> thelist = new();
             var cache = Path.Combine(_env.ContentRootPath, $"{label}.json");
+            DateTimeOffset cacheDate;
 
             // check if file exists
             if (File.Exists(cache))
             {
+                // get file time
+                cacheDate = File.GetCreationTime(cache);
+
                 // load json file
                 using (var stream = File.OpenRead(Path.Combine(_env.ContentRootPath, $"{label}.json")))
                 {
@@ -128,9 +132,11 @@ namespace TacticView.Data
                 {
                     thelist = await JsonSerializer.DeserializeAsync<List<TriageRepository>>(stream, CreateOptions());
                 }
+
+                cacheDate = DateTime.UtcNow;
             }
 
-            return thelist;
+            return new Tuple<List<TriageRepository>, DateTimeOffset>(thelist, cacheDate);
         }
 
         private static JsonSerializerOptions CreateOptions()

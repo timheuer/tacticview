@@ -61,7 +61,7 @@ else
                 }
             </Tabs>
         </RadzenTabs>
-        <span class="ml-2 mr-1 oi oi-reload" @onclick="ForceRefresh" title="Refresh cache"></span>
+        <span class="ml-2 mr-1 oi oi-reload" @onclick="ForceRefresh" title="Refresh cache"></span><span>Cached data: @CacheDate.Humanize()</span>
     }
 }
 @code {
@@ -72,6 +72,8 @@ else
     [Parameter] public bool EnableApproval { get; set; } = false;
 
     public List<TriageRepository> Repositories { get; set; }
+
+    public DateTimeOffset CacheDate;
 
     public string Filter { get; set; }
 
@@ -92,7 +94,10 @@ else
 
     public async Task LoadFromCache()
     {
-        Repositories = await IssuesService.GetCachedReposAndIssuesAsync(Label, IsOpenOnly);
+        var tuple = await IssuesService.GetCachedReposAndIssuesAsync(Label, IsOpenOnly);
+        Repositories = tuple.Item1;
+        CacheDate = tuple.Item2;
+
         StateHasChanged();
     }
 
