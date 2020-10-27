@@ -14,6 +14,12 @@ env:
   CONFIGURATION: Release
   DOTNET_CORE_VERSION: 5.0.100-rc.2.20479.15
   PROJECT_PATH: TacticView.csproj
+  DOTNET_CLI_TELEMETRY_OPTOUT: 1
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
+  DOTNET_NOLOGO: true
+  DOTNET_GENERATE_ASPNET_CERTIFICATE: false
+  DOTNET_ADD_GLOBAL_TOOLS_TO_PATH: false
+  DOTNET_MULTILEVEL_LOOKUP: 0
 jobs:
   build:
     if: github.event_name == 'push' && contains(toJson(github.event.commits), '***NO_CI***') == false && contains(toJson(github.event.commits), '[ci skip]') == false && contains(toJson(github.event.commits), '[skip ci]') == false
@@ -43,10 +49,3 @@ jobs:
       with:
         name: webapp
         path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
-    - name: Run C# Code Analyzer      
-      uses: microsoft/CSharpCodeAnalyzer@v0.1
-      id: runcsharpcodeanalyzer
-      with:
-        binary-path: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
-    - name: C# Code Analyzer analysis results
-      run: echo "${{ steps.runcsharpcodeanalyzer.outputs.results }}"
