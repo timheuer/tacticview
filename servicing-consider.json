@@ -1,0 +1,157 @@
+[
+  {
+    "Issues": [
+      {
+        "Title": "[Backport] Throw when reader is completed with an exception",
+        "Number": 43002,
+        "PullRequest": {
+          "HtmlUrl": "https://github.com/dotnet/corefx/pull/43002"
+        },
+        "Milestone": {
+          "Title": "3.1.x"
+        },
+        "State": {
+          "StringValue": "open"
+        },
+        "CreatedAt": "2020-10-28T16:13:23+00:00",
+        "Labels": [
+          {
+            "Color": "bfd4f2",
+            "Name": "Servicing-consider"
+          },
+          {
+            "Color": "d4c5f9",
+            "Name": "area-System.IO.Pipelines"
+          }
+        ],
+        "User": {
+          "Login": "BrennanConroy"
+        }
+      }
+    ],
+    "Name": "corefx",
+    "Owner": "dotnet"
+  },
+  {
+    "Issues": [
+      {
+        "Title": "[5.0.1] Fix issues with property called FooId on base type Foo in TPT",
+        "Number": 23112,
+        "PullRequest": {
+          "HtmlUrl": "https://github.com/dotnet/efcore/pull/23112"
+        },
+        "Milestone": {
+          "Title": "5.0.x"
+        },
+        "State": {
+          "StringValue": "open"
+        },
+        "CreatedAt": "2020-10-28T06:58:12+00:00",
+        "Labels": [
+          {
+            "Color": "bfd4f2",
+            "Name": "Servicing-consider"
+          }
+        ],
+        "User": {
+          "Login": "AndriySvyryd"
+        }
+      }
+    ],
+    "Name": "entityframeworkcore",
+    "Owner": "aspnet"
+  },
+  {
+    "Issues": [
+      {
+        "Title": "Allow setting \u0060TreeNode\u0060 image index to magic number \u0060-2\u0060 (servicing)",
+        "Number": 4165,
+        "PullRequest": {
+          "HtmlUrl": "https://github.com/dotnet/winforms/pull/4165"
+        },
+        "Milestone": {
+          "Title": "5.0.1"
+        },
+        "State": {
+          "StringValue": "open"
+        },
+        "CreatedAt": "2020-10-28T03:20:08+00:00",
+        "Labels": [
+          {
+            "Color": "bfd4f2",
+            "Name": "servicing-consider"
+          }
+        ],
+        "User": {
+          "Login": "RussKie"
+        }
+      }
+    ],
+    "Name": "winforms",
+    "Owner": "dotnet"
+  },
+  {
+    "Issues": [
+      {
+        "Title": "[release/5.0] Add backward compatibility file to timezone data compilation",
+        "Number": 43982,
+        "PullRequest": {
+          "HtmlUrl": "https://github.com/dotnet/runtime/pull/43982"
+        },
+        "Milestone": {
+          "Title": "5.0.0"
+        },
+        "State": {
+          "StringValue": "open"
+        },
+        "CreatedAt": "2020-10-28T21:18:23+00:00",
+        "Labels": [
+          {
+            "Color": "bfd4f2",
+            "Name": "Servicing-consider"
+          },
+          {
+            "Color": "eb6420",
+            "Name": "arch-wasm"
+          },
+          {
+            "Color": "d4c5f9",
+            "Name": "area-VM-meta-mono"
+          }
+        ],
+        "User": {
+          "Login": "tqiu8"
+        }
+      },
+      {
+        "Title": "[release/5.0] Throw when reader is completed with an exception",
+        "Number": 43903,
+        "PullRequest": {
+          "HtmlUrl": "https://github.com/dotnet/runtime/pull/43903"
+        },
+        "Milestone": {
+          "Title": "5.0.x"
+        },
+        "State": {
+          "StringValue": "open"
+        },
+        "CreatedAt": "2020-10-27T18:41:35+00:00",
+        "Labels": [
+          {
+            "Color": "bfd4f2",
+            "Name": "Servicing-consider"
+          },
+          {
+            "Color": "d4c5f9",
+            "Name": "area-System.IO.Pipelines"
+          }
+        ],
+        "User": {
+          "Login": "github-actions[bot]"
+        }
+      }
+    ],
+    "Name": "runtime",
+    "Owner": "dotnet"
+  }
+]

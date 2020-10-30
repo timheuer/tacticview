@@ -7,7 +7,7 @@ namespace TacticView.Data
 {
     public class Motivator
     {
-        static readonly string[] motivators = { 
+        static readonly string[] motivators = {
             "🎉 Nothing for now! 🙌",
             "Amazing.  The future is yours. 🚀",
             "You have nothing, here have a pony 🐴",
@@ -27,6 +27,17 @@ namespace TacticView.Data
             "The seas are clear...RELEASE THE KRAKEN 🐙"
         };
 
+        static readonly string[] bots =
+        {
+            "trampoline","asp.net","base","beach","Blazor","builder","chef","cloudapps","delivery-bot","doctor","facing-left","gamedevelopment","golf","grilling","guitar","handybot","hang-gliding","iot","jetpack-faceing-right","kayaking","lifting","machinelearning","magician","microservices","mic-drop","mobileapps-xamarin","on-the-phone","paragliding","presenting","razor-scooter","relaxing","scooter","skating","surfing"
+        };
+
+        public static string GetBot()
+        {
+            Random r = new();
+
+            return bots[r.Next(0, bots.Length)];
+        }
         public static string GetMotivator()
         {
             Random r = new();
