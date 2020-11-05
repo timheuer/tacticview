@@ -67,7 +67,9 @@ namespace TacticView.Data
                         CreatedAt = pr.CreatedAt,
                         State = new State() { StringValue = pr.State.StringValue },
                         PullRequest = new PullRequest() { HtmlUrl = pr.PullRequest.HtmlUrl },
-                        Labels = labels
+                        Labels = labels,
+                        Repo = repo,
+                        Org = owner
                     };
                     if (pr.Milestone != null)
                     {
@@ -92,21 +94,27 @@ namespace TacticView.Data
         public async Task GetReposAndIssuesAsync(string label, bool isOpenOnly = true)
         {
             ReposAndIssues thelist = new();
+            TriageRepository allRepo = new TriageRepository() { Owner = "dotnet", Name = "All", Issues = new List<SimpleIssue>() };
 
             // query each repo for the label
             foreach (var repo in _repos)
             {
                 // if it meets the condition, add to the model and get issues
                 var issues = await GetPullRequestsAsIssuesAsync(repo.Owner, repo.Name, label, isOpenOnly);
-                if (issues.Count > 0) { thelist.Repositories.Add(new TriageRepository() { Name = repo.Name, Issues = issues, Owner = repo.Owner }); };
+                if (issues.Count > 0)
+                {
+                    thelist.Repositories.Add(new TriageRepository() { Name = repo.Name, Issues = issues, Owner = repo.Owner });
+                    allRepo.Issues.AddRange(issues);
+                };
             }
+            thelist.Repositories.Add(allRepo);
 
             // write to disk
             using (var stream = File.Create(Path.Combine(_env.ContentRootPath, $"{label}.json")))
                 await JsonSerializer.SerializeAsync(stream, thelist.Repositories, CreateOptions());
         }
 
-        public async Task<Tuple<List<TriageRepository>,DateTimeOffset>> GetCachedReposAndIssuesAsync(string label, bool isOpenOnly = true)
+        public async Task<Tuple<List<TriageRepository>, DateTimeOffset>> GetCachedReposAndIssuesAsync(string label, bool isOpenOnly = true)
         {
             List<TriageRepository> thelist = new();
             var cache = Path.Combine(_env.ContentRootPath, $"{label}.json");

@@ -11,6 +11,8 @@
 *.sln.docstates
 *.liveshare
 appsettings.Development.json
+**/servicing-consider.json
+**/servicing-approved.json
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs

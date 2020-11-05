@@ -44,7 +44,7 @@ else
                                                 }
                                             </span>
                                             <div class="gh-details-cell">
-                                                @repo.Owner/@repo.Name#@item.Number @item.CreatedAt.Humanize() by <span class="ml-2 mr-1 oi oi-person text-muted"></span>@item.User.Login
+                                                @item.Org/@item.Repo#@item.Number @item.CreatedAt.Humanize() by <span class="ml-2 mr-1 oi oi-person text-muted"></span>@item.User.Login
 
                                                 @if (item.Milestone != null)
                                                 {

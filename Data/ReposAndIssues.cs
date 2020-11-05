@@ -37,6 +37,8 @@ namespace TacticView.Data
         public DateTimeOffset CreatedAt { get; set; }
         public List<Label> Labels { get; set; }
         public User User { get; set; }
+        public string Repo { get; set; }
+        public string Org { get; set; }
 
     }
 
