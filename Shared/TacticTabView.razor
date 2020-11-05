@@ -111,6 +111,15 @@ else
             if (issue.State.StringValue == "open") return true;
         }
 
+        if (Filter.ToLowerInvariant().StartsWith("m:"))
+        {
+            if (issue.Milestone != null && issue.Milestone.Title != null)
+            {
+                if (issue.Milestone.Title.Contains(Filter.Replace("m:", string.Empty), StringComparison.OrdinalIgnoreCase))
+                    return true;
+            }
+        }
+
         if (issue.Title.Contains(Filter, StringComparison.OrdinalIgnoreCase))
             return true;
 
