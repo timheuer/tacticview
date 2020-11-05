@@ -31,7 +31,7 @@ else
                             <tbody id="dataTable">
                                 <Virtualize Context="item" TItem="SimpleIssue" Items="@repo.Issues.Where(issue=>IsVisible(issue)).ToList()">
                                     <tr>
-                                        <th scope="row">
+                                        <th scope="row" nowrap>
                                             <GitMergeVisual State="@item.State.StringValue" />
                                             <a target="_blank" href="@item.PullRequest.HtmlUrl">@item.Number</a>
                                         </th>
