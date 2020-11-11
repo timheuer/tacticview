@@ -24,15 +24,32 @@
         }
 
         .ui-tabview-nav li a {
-            padding: 0.375rem 1rem
+            padding: 0.375rem 1rem;
+            font-weight:normal
         }
 
         .ui-tabview-nav .ui-tabview-selected {
-            border-top-color: #512bd4
+            border-top-color: #512bd4;
+            background-color: #512bd4;
+            color: #ffffff;
         }
 
         .ui-state-active a[role="tab"] {
             color: #512bd4
+        }
+
+        .ui-tabview-nav .ui-tabview-selected a {
+            color:#ffffff;
+        }
+
+
+
+        .ui-tabview-nav li:hover:not(.ui-tabview-selected):not(.ui-state-disabled) {
+            border-top-color: #512bd4;
+        }
+
+        .ui-tabview-nav li:hover:not(.ui-tabview-selected):not(.ui-state-disabled) a {
+            color: #512bd4;
         }
 
         a {
@@ -98,10 +115,6 @@
 
         .ui-tabview-left-icon {
             color: red
-        }
-
-        .ui-tabview-title {
-            font-size: 0.85em
         }
 
         .ui-tabview-panels {
