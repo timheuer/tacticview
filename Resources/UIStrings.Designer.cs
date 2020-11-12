@@ -97,6 +97,15 @@ namespace TacticView.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Created &amp; maintained by.
+        /// </summary>
+        internal static string CreationLabel {
+            get {
+                return ResourceManager.GetString("CreationLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Milestone.
         /// </summary>
         internal static string MilestoneHeader {

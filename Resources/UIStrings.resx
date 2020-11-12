@@ -129,6 +129,9 @@
   <data name="ConsiderDescription" xml:space="preserve">
     <value>Open PRs marked servicing-consider</value>
   </data>
+  <data name="CreationLabel" xml:space="preserve">
+    <value>Created &amp; maintained by</value>
+  </data>
   <data name="MilestoneHeader" xml:space="preserve">
     <value>Milestone</value>
   </data>
