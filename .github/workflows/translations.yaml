@@ -1,0 +1,37 @@
+name: "Translations"
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+    - '**.resx'
+      
+jobs:
+  build:
+    name: Create Translations    
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      
+    # Use the resource translator to automatically translate resource files
+    - name: Resource translator
+      uses: IEvangelist/resource-translator@v2.0.1
+      with:
+        # The Azure Cognitive Services translator resource subscription key
+        subscriptionKey: ${{ secrets.AZURE_TRANSLATOR_SUBSCRIPTION_KEY }}
+        # The Azure Cognitive Services translator resource endpoint.
+        endpoint: ${{ secrets.AZURE_TRANSLATOR_ENDPOINT }}
+        # (Optional) The Azure Cognitive Services translator resource region.
+        # This is optional when using a global translator resource.
+        region: ${{ secrets.AZURE_TRANSLATOR_REGION }}
+        # The source locale (i.e.; 'en'), used to create the glob pattern
+        # for which resource (**/*.en.resx) files to use as input
+        sourceLocale: 'en'
+
+    - name: Create pull request
+      uses: peter-evans/create-pull-request@v3.4.1
+      with:
+          commit-message: Updating translations
+          title: Update Translations from Azure
