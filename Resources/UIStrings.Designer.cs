@@ -106,6 +106,15 @@ namespace TacticView.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Deployed from commit.
+        /// </summary>
+        internal static string DeployLabel {
+            get {
+                return ResourceManager.GetString("DeployLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Milestone.
         /// </summary>
         internal static string MilestoneHeader {
