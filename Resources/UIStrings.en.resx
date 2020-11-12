@@ -132,6 +132,9 @@
   <data name="CreationLabel" xml:space="preserve">
     <value>Created &amp; maintained by</value>
   </data>
+  <data name="DeployLabel" xml:space="preserve">
+    <value>Deployed from commit</value>
+  </data>
   <data name="MilestoneHeader" xml:space="preserve">
     <value>Milestone</value>
   </data>
