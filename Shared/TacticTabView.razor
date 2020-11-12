@@ -1,4 +1,6 @@
 ﻿@inject GitHubQueryService IssuesService
+@inject NavigationManager NavigationManager
+
 @if (Repositories == null)
 {
     <p><em>Searching the interwebs...</em></p>
@@ -16,7 +18,7 @@ else
             <Tabs>
                 @foreach (var repo in Repositories)
                 {
-                    <RadzenTabsItem Text="@repo.Name">
+                    <RadzenTabsItem Text="@repo.Name" Selected="@IsTabSelected(repo.Name)">
                         <div class="form-group">
                             <input class="form-control" type="text" placeholder="Filter..." @bind="Filter" @bind:event="oninput">
                         </div>
@@ -83,6 +85,14 @@ else
         {
             await LoadFromCache();
         }
+    }
+
+    public bool IsTabSelected(string name)
+    {
+        var uri = NavigationManager.ToAbsoluteUri(NavigationManager.Uri);
+        QueryHelpers.ParseQuery(uri.Query).TryGetValue("repo", out var q);
+
+        return (q.ToString().ToLowerInvariant() == name.ToLowerInvariant());
     }
 
     public async Task ForceRefresh()
