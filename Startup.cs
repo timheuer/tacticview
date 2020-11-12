@@ -36,6 +36,7 @@ namespace TacticView
             services.AddScoped<NotificationService>();
             services.AddSingleton<AppInfo>();
             services.AddControllers();
+            services.AddLocalization(options => options.ResourcesPath = "Resources");
 
             Token = Configuration["GITHUB_TOKEN"];
             GITHUB_CLIENT_ID = Configuration["GITHUB_CLIENT_ID"];
@@ -57,6 +58,7 @@ namespace TacticView
             }
 
             app.UseHttpsRedirection();
+            app.UseRequestLocalization();
             app.UseStaticFiles();
 
             app.UseRouting();
