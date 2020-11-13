@@ -6,6 +6,10 @@ on:
       - master
     paths:
     - '**.en.resx'
+
+  workflow_dispatch:
+    branches:
+      - master
       
 jobs:
   build:

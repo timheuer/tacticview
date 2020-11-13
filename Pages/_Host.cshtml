@@ -1,4 +1,6 @@
 ﻿@page "/"
+@using System.Globalization
+@using Microsoft.AspNetCore.Localization
 @namespace TacticView.Pages
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
@@ -129,6 +131,14 @@
     </style>
 </head>
 <body class="rz-default-scrollbars">
+    @{
+        this.HttpContext.Response.Cookies.Append(
+            CookieRequestCultureProvider.DefaultCookieName,
+            CookieRequestCultureProvider.MakeCookieValue(
+                new RequestCulture(
+                    CultureInfo.CurrentCulture,
+                    CultureInfo.CurrentUICulture)));
+    }
     <app>
         <component type="typeof(App)" render-mode="ServerPrerendered" />
     </app>
