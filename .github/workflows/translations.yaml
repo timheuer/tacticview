@@ -22,7 +22,7 @@ jobs:
     # Use the resource translator to automatically translate resource files
     - name: Resource translator
       id: resource_translator
-      uses: IEvangelist/resource-translator@v2.0.2
+      uses: timheuer/resource-translator@main
       with:
         # The Azure Cognitive Services translator resource subscription key
         subscriptionKey: ${{ secrets.AZURE_TRANSLATOR_SUBSCRIPTION_KEY }}
