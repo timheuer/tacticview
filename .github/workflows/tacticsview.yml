@@ -7,6 +7,7 @@ on:
     - '**/*.md'
     - '**/*.gitignore'
     - '**/*.gitattributes'
+    - '**/translations.yml'
 env:
   AZURE_WEBAPP_NAME: tacticsview
   AZURE_WEBAPP_PACKAGE_PATH: ./published
