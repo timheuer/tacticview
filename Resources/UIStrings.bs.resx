@@ -59,7 +59,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AboutLabel" xml:space="preserve">
-    <value>About</value>
+    <value>O</value>
+  </data>
+  <data name="AppDescription" xml:space="preserve">
+    <value>App helps filter view of open issues for servicing a specific software release.</value>
   </data>
   <data name="ApprovedDescription" xml:space="preserve">
     <value>PRs marked servicing-approved</value>
