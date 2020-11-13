@@ -1,7 +1,8 @@
 ﻿@page "/servicing-approved"
+@inject IStringLocalizer<UIStrings> L
 
-<h1>@Resources.UIStrings.ServicingApprovedLong</h1>
+<h1>@L["ServicingApprovedLong"]</h1>
 
-<p>@Resources.UIStrings.ApprovedDescription</p>
+<p>@L["ApprovedDescription"]</p>
 
 <TacticTabView Label="servicing-approved" IsOpenOnly="false" />

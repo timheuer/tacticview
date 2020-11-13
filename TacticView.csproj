@@ -12,17 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Resources\UIStrings.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>UIStrings.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="Resources\UIStrings.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>UIStrings.Designer.cs</LastGenOutput>
+    <EmbeddedResource Update="Resources\UIStrings.en.resx">
+      <Generator></Generator>
     </EmbeddedResource>
   </ItemGroup>
 

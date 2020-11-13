@@ -1,8 +1,9 @@
 ﻿@page "/"
 @page "/servicing-consider"
+@inject IStringLocalizer<UIStrings> L
 
-<h1>@Resources.UIStrings.ServicingConsiderLong</h1>
+<h1>@L["ServicingConsiderLong"]</h1>
 
-<p>@Resources.UIStrings.ConsiderDescription</p>
+<p>@L["ConsiderDescription"]</p>
 
 <TacticTabView Label="servicing-consider" EnableApproval="true" />

@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -37,6 +38,16 @@ namespace TacticView
             services.AddSingleton<AppInfo>();
             services.AddControllers();
             services.AddLocalization(options => options.ResourcesPath = "Resources");
+            services.AddMvc()
+                .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix);
+
+            services.Configure<RequestLocalizationOptions>(options =>
+            {
+                var supportedCultures = new[] { "en", "af", "ar", "as", "bg", "bn", "bs", "ca", "cs", "cy", "da", "de", "el", "es", "et", "fa", "fi", "fil", "fj", "fr", "fr-ca", "ga", "gu", "he", "hi", "hr", "ht", "hu", "id", "is", "it", "ja", "kk", "kmr", "kn", "ko", "ku", "lt", "lv", "mg", "mi", "ml", "mr", "ms", "mt", "mww", "nb", "nl", "or", "otq", "pa", "pl", "prs", "ps", "pt", "pt-pt", "ro", "ru", "sk", "sl", "sm", "sr-Cyrl", "sr-Latn", "sv", "sw", "ta", "te", "th", "tlh-Latn", "tlh-Piqd", "to", "tr", "ty", "uk", "ur", "vi", "yua", "yue", "zh-Hans", "zh-Hant" };
+                options.SetDefaultCulture(supportedCultures[0])
+                    .AddSupportedCultures(supportedCultures)
+                    .AddSupportedUICultures(supportedCultures);
+            });
 
             Token = Configuration["GITHUB_TOKEN"];
             GITHUB_CLIENT_ID = Configuration["GITHUB_CLIENT_ID"];
@@ -58,7 +69,14 @@ namespace TacticView
             }
 
             app.UseHttpsRedirection();
-            app.UseRequestLocalization();
+
+            var supportedCultures = new[] { "en", "af", "ar", "as", "bg", "bn", "bs", "ca", "cs", "cy", "da", "de", "el", "es", "et", "fa", "fi", "fil", "fj", "fr", "fr-ca", "ga", "gu", "he", "hi", "hr", "ht", "hu", "id", "is", "it", "ja", "kk", "kmr", "kn", "ko", "ku", "lt", "lv", "mg", "mi", "ml", "mr", "ms", "mt", "mww", "nb", "nl", "or", "otq", "pa", "pl", "prs", "ps", "pt", "pt-pt", "ro", "ru", "sk", "sl", "sm", "sr-Cyrl", "sr-Latn", "sv", "sw", "ta", "te", "th", "tlh-Latn", "tlh-Piqd", "to", "tr", "ty", "uk", "ur", "vi", "yua", "yue", "zh-Hans", "zh-Hant" };
+            var localizationOptions = new RequestLocalizationOptions().SetDefaultCulture(supportedCultures[0])
+                .AddSupportedCultures(supportedCultures)
+                .AddSupportedUICultures(supportedCultures);
+
+            app.UseRequestLocalization(localizationOptions);
+
             app.UseStaticFiles();
 
             app.UseRouting();

@@ -1,9 +1,10 @@
 ﻿@inject GitHubQueryService IssuesService
 @inject NavigationManager NavigationManager
+@inject IStringLocalizer<UIStrings> L
 
 @if (Repositories == null)
 {
-    <p><em>@Resources.UIStrings.SearchingPlaceholder</em></p>
+    <p><em>@L["SearchingPlaceholder"]</em></p>
     <img src="images/octocat-spinner-128.gif" width="64" height="64" alt="Searching GitHub" aria-hidden="true" />
 }
 else
@@ -26,8 +27,8 @@ else
                             <thead class="thead-light">
                                 <tr>
                                     <th scope="col" width="90">ID</th>
-                                    <th scope="col">@Resources.UIStrings.TitleHeader</th>
-                                    <th scope="col" width="80">@Resources.UIStrings.MilestoneHeader</th>
+                                    <th scope="col">@L["TitleHeader"]</th>
+                                    <th scope="col" width="80">@L["MilestoneHeader"]</th>
                                 </tr>
                             </thead>
                             <tbody id="dataTable">
