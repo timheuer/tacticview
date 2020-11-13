@@ -10,9 +10,12 @@ on:
   workflow_dispatch:
     branches:
       - master
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
 jobs:
-  build:
+  translate:
     name: Create Translations    
     runs-on: ubuntu-latest
 
@@ -22,7 +25,7 @@ jobs:
     # Use the resource translator to automatically translate resource files
     - name: Resource translator
       id: resource_translator
-      uses: timheuer/resource-translator@main
+      uses: IEvangelist/resource-translator@v2.0.3-preview5
       with:
         # The Azure Cognitive Services translator resource subscription key
         subscriptionKey: ${{ secrets.AZURE_TRANSLATOR_SUBSCRIPTION_KEY }}
