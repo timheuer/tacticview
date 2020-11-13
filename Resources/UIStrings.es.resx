@@ -76,6 +76,9 @@
   <data name="DeployLabel" xml:space="preserve">
     <value>Desplegado desde la confirmación</value>
   </data>
+  <data name="FrameworkVersionLabel" xml:space="preserve">
+    <value>Versión del marco de trabajo</value>
+  </data>
   <data name="MilestoneHeader" xml:space="preserve">
     <value>Hito</value>
   </data>

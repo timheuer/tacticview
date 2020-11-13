@@ -76,6 +76,9 @@
   <data name="DeployLabel" xml:space="preserve">
     <value>Otettu käyttöön vahvistusta</value>
   </data>
+  <data name="FrameworkVersionLabel" xml:space="preserve">
+    <value>Kehyksen versio</value>
+  </data>
   <data name="MilestoneHeader" xml:space="preserve">
     <value>Virstanpylväs</value>
   </data>

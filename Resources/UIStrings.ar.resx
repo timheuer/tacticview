@@ -76,6 +76,9 @@
   <data name="DeployLabel" xml:space="preserve">
     <value>Deployed from commit</value>
   </data>
+  <data name="FrameworkVersionLabel" xml:space="preserve">
+    <value>Framework version</value>
+  </data>
   <data name="MilestoneHeader" xml:space="preserve">
     <value>Milestone</value>
   </data>

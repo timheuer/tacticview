@@ -76,6 +76,9 @@
   <data name="DeployLabel" xml:space="preserve">
     <value>Kasutusele võetud</value>
   </data>
+  <data name="FrameworkVersionLabel" xml:space="preserve">
+    <value>Raamistiku versioon</value>
+  </data>
   <data name="MilestoneHeader" xml:space="preserve">
     <value>Verstapost</value>
   </data>
