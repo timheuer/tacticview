@@ -25,7 +25,7 @@ jobs:
     # Use the resource translator to automatically translate resource files
     - name: Resource translator
       id: resource_translator
-      uses: IEvangelist/resource-translator@v2.0.3-preview6
+      uses: IEvangelist/resource-translator@v2.0.3-preview7
       with:
         subscriptionKey: ${{ secrets.AZURE_TRANSLATOR_SUBSCRIPTION_KEY }}
         endpoint: ${{ secrets.AZURE_TRANSLATOR_ENDPOINT }}
