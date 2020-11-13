@@ -138,6 +138,9 @@
   <data name="MilestoneHeader" xml:space="preserve">
     <value>Milestone</value>
   </data>
+  <data name="ProductionLabel" xml:space="preserve">
+    <value>Production</value>
+  </data>
   <data name="ReportAnIssue" xml:space="preserve">
     <value>Report an Issue</value>
   </data>
