@@ -36,5 +36,5 @@ jobs:
       uses: peter-evans/create-pull-request@v3.4.1
       with:
           commit-message: Updating translations
-          title: '${{ steps.resource-translator.outputs.summary-title }}'
-          body: '${{ steps.resource-translator.outputs.summary-details }}'
+          title: '${{ steps.resource_translator.outputs.summary-title }}'
+          body: '${{ steps.resource_translator.outputs.summary-details }}'
