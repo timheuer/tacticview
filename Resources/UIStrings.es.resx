@@ -59,45 +59,48 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AboutLabel" xml:space="preserve">
-    <value>acerca de</value>
+    <value>За</value>
   </data>
   <data name="ApprovedDescription" xml:space="preserve">
-    <value>PRs marcados con el servicio aprobado</value>
+    <value>ПР, одобрени за сервизно обслужване</value>
   </data>
   <data name="CacheText" xml:space="preserve">
-    <value>Datos almacenados en caché</value>
+    <value>Кеширани данни</value>
   </data>
   <data name="ConsiderDescription" xml:space="preserve">
-    <value>Los quiebres abiertos marcados con el servicio-consider</value>
+    <value>Отворени PR маркирани за обслужване-обмислени</value>
   </data>
   <data name="CreationLabel" xml:space="preserve">
-    <value>Creado y mantenido por</value>
+    <value>Създаден от</value>
   </data>
   <data name="DeployLabel" xml:space="preserve">
-    <value>Desplegado desde la confirmación</value>
+    <value>Внедрена от къмит</value>
+  </data>
+  <data name="FrameworkVersionLabel" xml:space="preserve">
+    <value>Версия на рамката</value>
   </data>
   <data name="MilestoneHeader" xml:space="preserve">
-    <value>Hito</value>
+    <value>Етап</value>
   </data>
   <data name="ReportAnIssue" xml:space="preserve">
-    <value>Informar de un problema</value>
+    <value>Подаване на сигнал за проблем</value>
   </data>
   <data name="SearchingPlaceholder" xml:space="preserve">
-    <value>Búsqueda de las interwebs</value>
+    <value>Търсене на междусега</value>
   </data>
   <data name="ServicingApprovedLong" xml:space="preserve">
-    <value>Servicio aprobado</value>
+    <value>Одобрено обслужване</value>
   </data>
   <data name="ServicingApprovedShort" xml:space="preserve">
-    <value>Aprobado</value>
+    <value>Одобрени</value>
   </data>
   <data name="ServicingConsiderLong" xml:space="preserve">
-    <value>Considerar el servicio</value>
+    <value>Обслужване помислете</value>
   </data>
   <data name="ServicingConsiderShort" xml:space="preserve">
-    <value>Considerar</value>
+    <value>Помисли</value>
   </data>
   <data name="TitleHeader" xml:space="preserve">
-    <value>Título</value>
+    <value>Заглавие</value>
   </data>
 </root>

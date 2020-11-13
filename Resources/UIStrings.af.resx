@@ -59,45 +59,48 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AboutLabel" xml:space="preserve">
-    <value>About</value>
+    <value>Oor</value>
   </data>
   <data name="ApprovedDescription" xml:space="preserve">
-    <value>PRs marked servicing-approved</value>
+    <value>PRs gemerk diens-goedgekeur</value>
   </data>
   <data name="CacheText" xml:space="preserve">
-    <value>Cached data</value>
+    <value>Gekaste data</value>
   </data>
   <data name="ConsiderDescription" xml:space="preserve">
-    <value>Open PRs marked servicing-consider</value>
+    <value>Open PRs gemerk diens-oorweeg</value>
   </data>
   <data name="CreationLabel" xml:space="preserve">
-    <value>Created &amp; maintained by</value>
+    <value>Geskep &amp;amp; onderhou deur</value>
   </data>
   <data name="DeployLabel" xml:space="preserve">
-    <value>Deployed from commit</value>
+    <value>Ontplooi uit pleeg</value>
+  </data>
+  <data name="FrameworkVersionLabel" xml:space="preserve">
+    <value>Raamwerk weergawe</value>
   </data>
   <data name="MilestoneHeader" xml:space="preserve">
-    <value>Milestone</value>
+    <value>Mylpaal</value>
   </data>
   <data name="ReportAnIssue" xml:space="preserve">
-    <value>Report an Issue</value>
+    <value>Rapporteer 'n kwessie</value>
   </data>
   <data name="SearchingPlaceholder" xml:space="preserve">
-    <value>Searching the interwebs</value>
+    <value>Deursoek die interwebs</value>
   </data>
   <data name="ServicingApprovedLong" xml:space="preserve">
-    <value>Servicing Approved</value>
+    <value>Diens goedgekeur</value>
   </data>
   <data name="ServicingApprovedShort" xml:space="preserve">
-    <value>Approved</value>
+    <value>Goedgekeur</value>
   </data>
   <data name="ServicingConsiderLong" xml:space="preserve">
-    <value>Servicing Consider</value>
+    <value>Diens oorweeg</value>
   </data>
   <data name="ServicingConsiderShort" xml:space="preserve">
-    <value>Consider</value>
+    <value>Oorweeg</value>
   </data>
   <data name="TitleHeader" xml:space="preserve">
-    <value>Title</value>
+    <value>Titel</value>
   </data>
 </root>

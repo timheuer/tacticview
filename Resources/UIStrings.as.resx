@@ -59,45 +59,48 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AboutLabel" xml:space="preserve">
-    <value>About</value>
+    <value>ৰ বিষয়ে</value>
   </data>
   <data name="ApprovedDescription" xml:space="preserve">
-    <value>PRs marked servicing-approved</value>
+    <value>চাৰ্ভিচিং-অনুমোদিত চিহ্নিত PRs</value>
   </data>
   <data name="CacheText" xml:space="preserve">
-    <value>Cached data</value>
+    <value>ক্যাশ কৰা তথ্য</value>
   </data>
   <data name="ConsiderDescription" xml:space="preserve">
-    <value>Open PRs marked servicing-consider</value>
+    <value>PRs চিহ্নিত সেৱা-বিবেচনা খোলক</value>
   </data>
   <data name="CreationLabel" xml:space="preserve">
-    <value>Created &amp; maintained by</value>
+    <value>ইয়াৰ দ্বাৰা সৃষ্টি আৰু বজাই ৰখা হৈছে</value>
   </data>
   <data name="DeployLabel" xml:space="preserve">
-    <value>Deployed from commit</value>
+    <value>commit ৰ পৰা প্ৰবিষ্ট কৰা হৈছে</value>
+  </data>
+  <data name="FrameworkVersionLabel" xml:space="preserve">
+    <value>ফ্ৰেমৱৰ্ক সংস্কৰণ</value>
   </data>
   <data name="MilestoneHeader" xml:space="preserve">
-    <value>Milestone</value>
+    <value>মাইলৰ খুটি</value>
   </data>
   <data name="ReportAnIssue" xml:space="preserve">
-    <value>Report an Issue</value>
+    <value>এটা সমস্যা প্ৰতিবেদন কৰক</value>
   </data>
   <data name="SearchingPlaceholder" xml:space="preserve">
-    <value>Searching the interwebs</value>
+    <value>আন্তঃৱেবসমূহ সন্ধান কৰা হৈছে</value>
   </data>
   <data name="ServicingApprovedLong" xml:space="preserve">
-    <value>Servicing Approved</value>
+    <value>সেৱা অনুমোদিত</value>
   </data>
   <data name="ServicingApprovedShort" xml:space="preserve">
-    <value>Approved</value>
+    <value>অনুমোদিত</value>
   </data>
   <data name="ServicingConsiderLong" xml:space="preserve">
-    <value>Servicing Consider</value>
+    <value>সেৱা বিবেচনা কৰক</value>
   </data>
   <data name="ServicingConsiderShort" xml:space="preserve">
-    <value>Consider</value>
+    <value>বিবেচনা কৰক</value>
   </data>
   <data name="TitleHeader" xml:space="preserve">
-    <value>Title</value>
+    <value>শিৰোনাম</value>
   </data>
 </root>
