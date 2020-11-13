@@ -23,12 +23,12 @@ else
                         <div class="form-group">
                             <input class="form-control" type="text" placeholder="Filter..." @bind="Filter" @bind:event="oninput">
                         </div>
-                        <table class="table table-striped">
+                        <table class="table table-striped table-hover">
                             <thead class="thead-light">
                                 <tr>
-                                    <th scope="col" width="90">ID</th>
-                                    <th scope="col">@L["TitleHeader"]</th>
-                                    <th scope="col" width="80">@L["MilestoneHeader"]</th>
+                                    <th scope="col" width="90" class="sticky-top">ID</th>
+                                    <th scope="col" class="sticky-top">@L["TitleHeader"]</th>
+                                    <th scope="col" width="80" class="sticky-top">@L["MilestoneHeader"]</th>
                                 </tr>
                             </thead>
                             <tbody id="dataTable">
