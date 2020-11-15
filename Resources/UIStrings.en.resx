@@ -159,4 +159,7 @@
   <data name="TitleHeader" xml:space="preserve">
     <value>Title</value>
   </data>
+  <data name="TranslationsProvidedByLabel" xml:space="preserve">
+    <value>Translations for this app provided by https://github.com/IEvangelist/resource-translator</value>
+  </data>
 </root>
