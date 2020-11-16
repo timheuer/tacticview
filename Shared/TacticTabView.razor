@@ -43,7 +43,7 @@ else
                                             <span>
                                                 @foreach (var label in item.Labels)
                                                 {
-                                                    <span class="gh-label" style="color:@Colors.GetReadableForeColorAsString(label.Color);background-color:#@label.Color">@label.Name</span>
+                                                    <span class="gh-label" style="color:@Colors.GetReadableForeColorAsString(label.Color);background-color:#@label.Color">@label.Name.Emojify()</span>
                                                 }
                                             </span>
                                             <div class="gh-details-cell">

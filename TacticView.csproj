@@ -6,9 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="GEmojiSharp" Version="1.3.0" />
     <PackageReference Include="Humanizer" Version="2.8.26" />
     <PackageReference Include="Octokit" Version="0.48.0" />
-    <PackageReference Include="Radzen.Blazor" Version="2.16.2" />
+    <PackageReference Include="Radzen.Blazor" Version="2.17.1" />
   </ItemGroup>
 
   <ItemGroup>
