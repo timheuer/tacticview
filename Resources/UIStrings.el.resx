@@ -59,45 +59,48 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AboutLabel" xml:space="preserve">
-    <value>About</value>
+    <value>Για</value>
   </data>
   <data name="ApprovedDescription" xml:space="preserve">
-    <value>PRs marked servicing-approved</value>
+    <value>PRs με σήμανση συντήρησης-εγκεκριμένη</value>
   </data>
   <data name="CacheText" xml:space="preserve">
-    <value>Cached data</value>
+    <value>Προσωρινά αποθηκευμένα δεδομένα</value>
   </data>
   <data name="ConsiderDescription" xml:space="preserve">
-    <value>Open PRs marked servicing-consider</value>
+    <value>Άνοιγμα PR με σήμανση συντήρησης-εξέταση</value>
   </data>
   <data name="CreationLabel" xml:space="preserve">
-    <value>Created &amp; maintained by</value>
+    <value>Δημιουργήθηκε και συντηρείται από</value>
   </data>
   <data name="DeployLabel" xml:space="preserve">
-    <value>Deployed from commit</value>
+    <value>Ανάπτυξη από δέσμευση</value>
   </data>
   <data name="MilestoneHeader" xml:space="preserve">
-    <value>Milestone</value>
+    <value>Ορόσημο</value>
   </data>
   <data name="ReportAnIssue" xml:space="preserve">
-    <value>Report an Issue</value>
+    <value>Αναφορά ζητήματος</value>
   </data>
   <data name="SearchingPlaceholder" xml:space="preserve">
-    <value>Searching the interwebs</value>
+    <value>Αναζήτηση στα interwebs</value>
   </data>
   <data name="ServicingApprovedLong" xml:space="preserve">
-    <value>Servicing Approved</value>
+    <value>Εγκεκριμένη συντήρηση</value>
   </data>
   <data name="ServicingApprovedShort" xml:space="preserve">
-    <value>Approved</value>
+    <value>Εγκριθεί</value>
   </data>
   <data name="ServicingConsiderLong" xml:space="preserve">
-    <value>Servicing Consider</value>
+    <value>Συντήρηση Εξετάστε το ενδεχόμενο</value>
   </data>
   <data name="ServicingConsiderShort" xml:space="preserve">
-    <value>Consider</value>
+    <value>Εξετάσει</value>
   </data>
   <data name="TitleHeader" xml:space="preserve">
-    <value>Title</value>
+    <value>Τίτλο</value>
+  </data>
+  <data name="TranslationsProvidedByLabel" xml:space="preserve">
+    <value>Μεταφράσεις για αυτήν την εφαρμογή που παρέχονται από https://github.com/IEvangelist/resource-translator</value>
   </data>
 </root>

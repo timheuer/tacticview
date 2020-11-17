@@ -59,45 +59,48 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AboutLabel" xml:space="preserve">
-    <value>Noin</value>
+    <value>Tungkol sa</value>
   </data>
   <data name="ApprovedDescription" xml:space="preserve">
-    <value>PR-merkitty huoltoon hyväksytty</value>
+    <value>PRS minarkahan servicing-aprubado</value>
   </data>
   <data name="CacheText" xml:space="preserve">
-    <value>Välimuistiin tallennetut tiedot</value>
+    <value>Naka-cach na datos</value>
   </data>
   <data name="ConsiderDescription" xml:space="preserve">
-    <value>Avaa huoltoon merkityt PR:t</value>
+    <value>Buksan ang PRS minarkahan servicing-consider</value>
   </data>
   <data name="CreationLabel" xml:space="preserve">
-    <value>Luonut &amp; ylläpitänyt</value>
+    <value>Nilikha &amp; mapanatili sa pamamagitan ng</value>
   </data>
   <data name="DeployLabel" xml:space="preserve">
-    <value>Otettu käyttöön vahvistusta</value>
+    <value>Deployed mula sa commit</value>
   </data>
   <data name="MilestoneHeader" xml:space="preserve">
-    <value>Virstanpylväs</value>
+    <value>Mahahalagang Pangyayari</value>
   </data>
   <data name="ReportAnIssue" xml:space="preserve">
-    <value>Ilmoita ongelmasta</value>
+    <value>Magreport ng Isyu</value>
   </data>
   <data name="SearchingPlaceholder" xml:space="preserve">
-    <value>Etsiminen interwebsistä</value>
+    <value>Paghahanap sa mga interwebs</value>
   </data>
   <data name="ServicingApprovedLong" xml:space="preserve">
-    <value>Huolto hyväksytty</value>
+    <value>Inaprubahan ng Paglilingkod</value>
   </data>
   <data name="ServicingApprovedShort" xml:space="preserve">
-    <value>Hyväksytty</value>
+    <value>Inaprubahan</value>
   </data>
   <data name="ServicingConsiderLong" xml:space="preserve">
-    <value>Huollon harkitse</value>
+    <value>Servicing Isaalang-alang</value>
   </data>
   <data name="ServicingConsiderShort" xml:space="preserve">
-    <value>Harkitse</value>
+    <value>Isaalang-alang</value>
   </data>
   <data name="TitleHeader" xml:space="preserve">
-    <value>Otsikko</value>
+    <value>Pamagat</value>
+  </data>
+  <data name="TranslationsProvidedByLabel" xml:space="preserve">
+    <value>Pagsasalin para sa app na ito na ibinigay ng https://github.com/IEvangelist/resource-translator</value>
   </data>
 </root>

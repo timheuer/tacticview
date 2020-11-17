@@ -59,45 +59,48 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AboutLabel" xml:space="preserve">
-    <value>Noin</value>
+    <value>Circa</value>
   </data>
   <data name="ApprovedDescription" xml:space="preserve">
-    <value>PR-merkitty huoltoon hyväksytty</value>
+    <value>PRs contrassegnati come serviti approvati</value>
   </data>
   <data name="CacheText" xml:space="preserve">
-    <value>Välimuistiin tallennetut tiedot</value>
+    <value>Dati memorizzati nella cache</value>
   </data>
   <data name="ConsiderDescription" xml:space="preserve">
-    <value>Avaa huoltoon merkityt PR:t</value>
+    <value>PRs aperti contrassegnati come manutenzione-consider</value>
   </data>
   <data name="CreationLabel" xml:space="preserve">
-    <value>Luonut &amp; ylläpitänyt</value>
+    <value>Creato e mantenuto da</value>
   </data>
   <data name="DeployLabel" xml:space="preserve">
-    <value>Otettu käyttöön vahvistusta</value>
+    <value>Distribuito da commit</value>
   </data>
   <data name="MilestoneHeader" xml:space="preserve">
-    <value>Virstanpylväs</value>
+    <value>Pietra miliare</value>
   </data>
   <data name="ReportAnIssue" xml:space="preserve">
-    <value>Ilmoita ongelmasta</value>
+    <value>Segnalare un problema</value>
   </data>
   <data name="SearchingPlaceholder" xml:space="preserve">
-    <value>Etsiminen interwebsistä</value>
+    <value>Ricerca nei web interweb</value>
   </data>
   <data name="ServicingApprovedLong" xml:space="preserve">
-    <value>Huolto hyväksytty</value>
+    <value>Manutenzione approvata</value>
   </data>
   <data name="ServicingApprovedShort" xml:space="preserve">
-    <value>Hyväksytty</value>
+    <value>Approvato</value>
   </data>
   <data name="ServicingConsiderLong" xml:space="preserve">
-    <value>Huollon harkitse</value>
+    <value>Considerazione di manutenzione</value>
   </data>
   <data name="ServicingConsiderShort" xml:space="preserve">
-    <value>Harkitse</value>
+    <value>Considerare</value>
   </data>
   <data name="TitleHeader" xml:space="preserve">
-    <value>Otsikko</value>
+    <value>Titolo</value>
+  </data>
+  <data name="TranslationsProvidedByLabel" xml:space="preserve">
+    <value>Traduzioni per questa applicazione fornita da https://github.com/IEvangelist/resource-translator</value>
   </data>
 </root>

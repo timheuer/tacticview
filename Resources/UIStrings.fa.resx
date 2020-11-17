@@ -100,4 +100,7 @@
   <data name="TitleHeader" xml:space="preserve">
     <value>عنوان</value>
   </data>
+  <data name="TranslationsProvidedByLabel" xml:space="preserve">
+    <value>ترجمه برای این برنامه ارائه شده توسط https://github.com/IEvangelist/resource-translator</value>
+  </data>
 </root>

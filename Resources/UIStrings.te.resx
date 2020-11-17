@@ -59,45 +59,48 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AboutLabel" xml:space="preserve">
-    <value>Noin</value>
+    <value>గురించి</value>
   </data>
   <data name="ApprovedDescription" xml:space="preserve">
-    <value>PR-merkitty huoltoon hyväksytty</value>
+    <value>సర్వీసింగ్-ఆమోదించబడ్డ పిఆర్ లు మార్క్ చేయబడ్డాయి</value>
   </data>
   <data name="CacheText" xml:space="preserve">
-    <value>Välimuistiin tallennetut tiedot</value>
+    <value>కాష్ డ్ డేటా</value>
   </data>
   <data name="ConsiderDescription" xml:space="preserve">
-    <value>Avaa huoltoon merkityt PR:t</value>
+    <value>సర్వీసింగ్-పరిగణనలోకి తీసుకోవడం కొరకు మార్క్ చేయబడ్డ ఓపెన్ పిఆర్ లు</value>
   </data>
   <data name="CreationLabel" xml:space="preserve">
-    <value>Luonut &amp; ylläpitänyt</value>
+    <value>ద్వారా సృష్టించబడింది మరియు నిర్వహించబడుతుంది</value>
   </data>
   <data name="DeployLabel" xml:space="preserve">
-    <value>Otettu käyttöön vahvistusta</value>
+    <value>కమిట్ నుంచి అమలు చేయడ౦</value>
   </data>
   <data name="MilestoneHeader" xml:space="preserve">
-    <value>Virstanpylväs</value>
+    <value>మైలురాయి</value>
   </data>
   <data name="ReportAnIssue" xml:space="preserve">
-    <value>Ilmoita ongelmasta</value>
+    <value>ఒక సమస్యను నివేదించు</value>
   </data>
   <data name="SearchingPlaceholder" xml:space="preserve">
-    <value>Etsiminen interwebsistä</value>
+    <value>ఇంటర్ వెబ్ లను శోధిస్తోంది</value>
   </data>
   <data name="ServicingApprovedLong" xml:space="preserve">
-    <value>Huolto hyväksytty</value>
+    <value>సర్వీసింగ్ ఆమోదించబడింది</value>
   </data>
   <data name="ServicingApprovedShort" xml:space="preserve">
-    <value>Hyväksytty</value>
+    <value>ఆమోదించబడింది</value>
   </data>
   <data name="ServicingConsiderLong" xml:space="preserve">
-    <value>Huollon harkitse</value>
+    <value>సర్వీసింగ్ పరిగణించండి</value>
   </data>
   <data name="ServicingConsiderShort" xml:space="preserve">
-    <value>Harkitse</value>
+    <value>పరిగణనలోకి తీసుకోండి</value>
   </data>
   <data name="TitleHeader" xml:space="preserve">
-    <value>Otsikko</value>
+    <value>శీర్షిక</value>
+  </data>
+  <data name="TranslationsProvidedByLabel" xml:space="preserve">
+    <value>https://github.com/IEvangelist/resource-translator ద్వారా అందించబడ్డ ఈ యాప్ కొరకు ట్రాన్స్ లేషన్ లు</value>
   </data>
 </root>

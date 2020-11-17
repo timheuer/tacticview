@@ -59,45 +59,48 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AboutLabel" xml:space="preserve">
-    <value>Noin</value>
+    <value>ਇਸ ਬਾਰੇ</value>
   </data>
   <data name="ApprovedDescription" xml:space="preserve">
-    <value>PR-merkitty huoltoon hyväksytty</value>
+    <value>PRs ਨੇ ਸਰਵਿਸਿੰਗ-ਮਨਜ਼ੂਰਸ਼ੁਦਾ ਨਿਸ਼ਾਨਦੇਹੀ ਕੀਤੀ</value>
   </data>
   <data name="CacheText" xml:space="preserve">
-    <value>Välimuistiin tallennetut tiedot</value>
+    <value>ਕੈਸ਼ ਕੀਤਾ ਡਾਟਾ</value>
   </data>
   <data name="ConsiderDescription" xml:space="preserve">
-    <value>Avaa huoltoon merkityt PR:t</value>
+    <value>ਸਰਵਿਸਿੰਗ-ਵਿਚਾਰ ਚਿੰਨ੍ਹਿਤ PRs ਖੋਲ੍ਹੋ</value>
   </data>
   <data name="CreationLabel" xml:space="preserve">
-    <value>Luonut &amp; ylläpitänyt</value>
+    <value>ਇਸ ਦੁਆਰਾ ਬਣਾਈ ਗਈ( s)</value>
   </data>
   <data name="DeployLabel" xml:space="preserve">
-    <value>Otettu käyttöön vahvistusta</value>
+    <value>ਕਮਿਟ ਤੋਂ ਤਾਇਨਾਤ</value>
   </data>
   <data name="MilestoneHeader" xml:space="preserve">
-    <value>Virstanpylväs</value>
+    <value>ਮੀਲ ਪੱਥਰ</value>
   </data>
   <data name="ReportAnIssue" xml:space="preserve">
-    <value>Ilmoita ongelmasta</value>
+    <value>ਇੱਕ ਸਮੱਸਿਆ ਦੀ ਰਿਪੋਰਟ</value>
   </data>
   <data name="SearchingPlaceholder" xml:space="preserve">
-    <value>Etsiminen interwebsistä</value>
+    <value>ਇੰਟਰਵੈੱਬ ਖੋਜੇ ਜਾ ਰਹੇ ਹਨ</value>
   </data>
   <data name="ServicingApprovedLong" xml:space="preserve">
-    <value>Huolto hyväksytty</value>
+    <value>ਸਰਵਿਸਿੰਗ ਮਨਜ਼ੂਰ</value>
   </data>
   <data name="ServicingApprovedShort" xml:space="preserve">
-    <value>Hyväksytty</value>
+    <value>ਮਨਜ਼ੂਰ</value>
   </data>
   <data name="ServicingConsiderLong" xml:space="preserve">
-    <value>Huollon harkitse</value>
+    <value>ਸਰਵਿਸਿੰਗ ਵਿਚਾਰ</value>
   </data>
   <data name="ServicingConsiderShort" xml:space="preserve">
-    <value>Harkitse</value>
+    <value>ਵਿਚਾਰ</value>
   </data>
   <data name="TitleHeader" xml:space="preserve">
-    <value>Otsikko</value>
+    <value>ਟਾਈਟਲ</value>
+  </data>
+  <data name="TranslationsProvidedByLabel" xml:space="preserve">
+    <value>https://github.com/IEvangelist/resource-translator ਦੁਆਰਾ ਪ੍ਰਦਾਨ ਕੀਤੀ ਇਸ ਐਪ ਲਈ ਅਨੁਵਾਦ</value>
   </data>
 </root>

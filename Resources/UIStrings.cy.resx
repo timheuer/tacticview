@@ -59,45 +59,48 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AboutLabel" xml:space="preserve">
-    <value>About</value>
+    <value>Am</value>
   </data>
   <data name="ApprovedDescription" xml:space="preserve">
-    <value>PRs marked servicing-approved</value>
+    <value>PRs wedi'u marcio â'u cymeradwyo</value>
   </data>
   <data name="CacheText" xml:space="preserve">
-    <value>Cached data</value>
+    <value>Data wedi'i storio</value>
   </data>
   <data name="ConsiderDescription" xml:space="preserve">
-    <value>Open PRs marked servicing-consider</value>
+    <value>Agor PRs wedi'u marcio'n gwasanaethu</value>
   </data>
   <data name="CreationLabel" xml:space="preserve">
-    <value>Created &amp; maintained by</value>
+    <value>Crëwyd a'i gynnal gan</value>
   </data>
   <data name="DeployLabel" xml:space="preserve">
-    <value>Deployed from commit</value>
+    <value>Wedi'i ddefnyddio o ymrwymo</value>
   </data>
   <data name="MilestoneHeader" xml:space="preserve">
-    <value>Milestone</value>
+    <value>Garreg filltir</value>
   </data>
   <data name="ReportAnIssue" xml:space="preserve">
-    <value>Report an Issue</value>
+    <value>Rhoi gwybod am Fater</value>
   </data>
   <data name="SearchingPlaceholder" xml:space="preserve">
-    <value>Searching the interwebs</value>
+    <value>Chwilio'r rhyngwebs</value>
   </data>
   <data name="ServicingApprovedLong" xml:space="preserve">
-    <value>Servicing Approved</value>
+    <value>Cymeradwywyd y Gwasanaeth</value>
   </data>
   <data name="ServicingApprovedShort" xml:space="preserve">
-    <value>Approved</value>
+    <value>Cymeradwyo</value>
   </data>
   <data name="ServicingConsiderLong" xml:space="preserve">
-    <value>Servicing Consider</value>
+    <value>Ystyried Gwasanaethu</value>
   </data>
   <data name="ServicingConsiderShort" xml:space="preserve">
-    <value>Consider</value>
+    <value>Ystyried</value>
   </data>
   <data name="TitleHeader" xml:space="preserve">
-    <value>Title</value>
+    <value>Teitl</value>
+  </data>
+  <data name="TranslationsProvidedByLabel" xml:space="preserve">
+    <value>Cyfieithiadau ar gyfer yr ap hwn a ddarperir gan https://github.com/IEvangelist/resource-translator</value>
   </data>
 </root>
