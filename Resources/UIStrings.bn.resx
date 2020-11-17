@@ -59,45 +59,48 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AboutLabel" xml:space="preserve">
-    <value>About</value>
+    <value>সম্বন্ধে</value>
   </data>
   <data name="ApprovedDescription" xml:space="preserve">
-    <value>PRs marked servicing-approved</value>
+    <value>পিআরএস সার্ভিসিং-অনুমোদিত</value>
   </data>
   <data name="CacheText" xml:space="preserve">
-    <value>Cached data</value>
+    <value>ক্যাশকৃত উপাত্ত</value>
   </data>
   <data name="ConsiderDescription" xml:space="preserve">
-    <value>Open PRs marked servicing-consider</value>
+    <value>সার্ভিসিং-বিবেচনা চিহ্নিত PRs খুলুন</value>
   </data>
   <data name="CreationLabel" xml:space="preserve">
-    <value>Created &amp; maintained by</value>
+    <value>দ্বারা নির্মিত এবং রক্ষণাবেক্ষণ করা হয়েছে</value>
   </data>
   <data name="DeployLabel" xml:space="preserve">
-    <value>Deployed from commit</value>
+    <value>অঙ্গীকার থেকে মোতায়েন করা হয়েছে</value>
   </data>
   <data name="MilestoneHeader" xml:space="preserve">
-    <value>Milestone</value>
+    <value>মাইলফলক</value>
   </data>
   <data name="ReportAnIssue" xml:space="preserve">
-    <value>Report an Issue</value>
+    <value>একটি ইস্যু প্রতিবেদন করুন</value>
   </data>
   <data name="SearchingPlaceholder" xml:space="preserve">
-    <value>Searching the interwebs</value>
+    <value>ইন্টারওয়েব অনুসন্ধান করা হচ্ছে</value>
   </data>
   <data name="ServicingApprovedLong" xml:space="preserve">
-    <value>Servicing Approved</value>
+    <value>সার্ভিসিং অনুমোদিত</value>
   </data>
   <data name="ServicingApprovedShort" xml:space="preserve">
-    <value>Approved</value>
+    <value>স্বীকৃত</value>
   </data>
   <data name="ServicingConsiderLong" xml:space="preserve">
-    <value>Servicing Consider</value>
+    <value>সার্ভিসিং বিবেচনা</value>
   </data>
   <data name="ServicingConsiderShort" xml:space="preserve">
-    <value>Consider</value>
+    <value>বিবেচনা</value>
   </data>
   <data name="TitleHeader" xml:space="preserve">
-    <value>Title</value>
+    <value>শীর্ষক</value>
+  </data>
+  <data name="TranslationsProvidedByLabel" xml:space="preserve">
+    <value>https://github.com/IEvangelist/resource-translator দ্বারা প্রদত্ত এই অ্যাপের জন্য অনুবাদ</value>
   </data>
 </root>

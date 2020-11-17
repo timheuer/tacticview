@@ -100,4 +100,7 @@
   <data name="TitleHeader" xml:space="preserve">
     <value>Otsikko</value>
   </data>
+  <data name="TranslationsProvidedByLabel" xml:space="preserve">
+    <value>Tämän sovelluksen käännökset, jotka https://github.com/IEvangelist/resource-translator</value>
+  </data>
 </root>

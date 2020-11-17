@@ -59,45 +59,48 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AboutLabel" xml:space="preserve">
-    <value>About</value>
+    <value>O</value>
   </data>
   <data name="ApprovedDescription" xml:space="preserve">
-    <value>PRs marked servicing-approved</value>
+    <value>PRs označené servisem schválené</value>
   </data>
   <data name="CacheText" xml:space="preserve">
-    <value>Cached data</value>
+    <value>Data uložená v mezipaměti</value>
   </data>
   <data name="ConsiderDescription" xml:space="preserve">
-    <value>Open PRs marked servicing-consider</value>
+    <value>Otevřené PRs označené servis-consider</value>
   </data>
   <data name="CreationLabel" xml:space="preserve">
-    <value>Created &amp; maintained by</value>
+    <value>Vytvořeno a udržováno</value>
   </data>
   <data name="DeployLabel" xml:space="preserve">
-    <value>Deployed from commit</value>
+    <value>Nasazeno z potvrzení</value>
   </data>
   <data name="MilestoneHeader" xml:space="preserve">
-    <value>Milestone</value>
+    <value>Milník</value>
   </data>
   <data name="ReportAnIssue" xml:space="preserve">
-    <value>Report an Issue</value>
+    <value>Nahlášení problému</value>
   </data>
   <data name="SearchingPlaceholder" xml:space="preserve">
-    <value>Searching the interwebs</value>
+    <value>Vyhledávání mezi webových stránek</value>
   </data>
   <data name="ServicingApprovedLong" xml:space="preserve">
-    <value>Servicing Approved</value>
+    <value>Schválená údržba</value>
   </data>
   <data name="ServicingApprovedShort" xml:space="preserve">
-    <value>Approved</value>
+    <value>Schválených</value>
   </data>
   <data name="ServicingConsiderLong" xml:space="preserve">
-    <value>Servicing Consider</value>
+    <value>Údržba Zvažte</value>
   </data>
   <data name="ServicingConsiderShort" xml:space="preserve">
-    <value>Consider</value>
+    <value>Zvážit</value>
   </data>
   <data name="TitleHeader" xml:space="preserve">
-    <value>Title</value>
+    <value>Název</value>
+  </data>
+  <data name="TranslationsProvidedByLabel" xml:space="preserve">
+    <value>Překlady pro tuto aplikaci poskytované https://github.com/IEvangelist/resource-translator</value>
   </data>
 </root>
