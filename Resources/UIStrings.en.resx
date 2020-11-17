@@ -160,6 +160,6 @@
     <value>Title</value>
   </data>
   <data name="TranslationsProvidedByLabel" xml:space="preserve">
-    <value>Translations for this app are provided by https://github.com/IEvangelist/resource-translator</value>
+    <value>Translations for this app provided by https://github.com/IEvangelist/resource-translator</value>
   </data>
 </root>
