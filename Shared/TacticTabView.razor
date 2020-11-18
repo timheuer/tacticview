@@ -19,7 +19,7 @@ else
             <Tabs>
                 @foreach (var repo in Repositories)
                 {
-                    <RadzenTabsItem Text="@repo.Name" Selected="@IsTabSelected(repo.Name)">
+                    <RadzenTabsItem Text="@($"{repo.Name} ({repo.Issues.Where(issue=>IsVisible(issue)).Count()})")" Selected="@IsTabSelected(repo.Name)">
                         <div class="form-group">
                             <input class="form-control" type="text" placeholder="Filter..." @bind="Filter" @bind:event="oninput">
                         </div>
