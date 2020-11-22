@@ -15,51 +15,57 @@ else
     }
     else
     {
-        <RadzenTabs>
+        <RadzenTabs @bind-SelectedIndex="@SelectedIndex">
             <Tabs>
                 @foreach (var repo in Repositories)
                 {
-                    <RadzenTabsItem Text="@($"{repo.Name} ({repo.Issues.Where(issue=>IsVisible(issue)).Count()})")" Selected="@IsTabSelected(repo.Name)">
-                        <div class="form-group">
-                            <input class="form-control" type="text" placeholder="Filter..." @bind="Filter" @bind:event="oninput">
-                        </div>
-                        <table class="table table-striped table-hover">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th scope="col" width="90" class="sticky-top">ID</th>
-                                    <th scope="col" class="sticky-top">@L["TitleHeader"]</th>
-                                    <th scope="col" width="80" class="sticky-top">@L["MilestoneHeader"]</th>
-                                </tr>
-                            </thead>
-                            <tbody id="dataTable">
-                                <Virtualize Context="item" TItem="SimpleIssue" Items="@repo.Issues.Where(issue=>IsVisible(issue)).ToList()">
+                    <RadzenTabsItem Selected="@IsTabSelected(repo.Name)">
+                        <Template Context="tab">
+                            @repo.Name&nbsp;@RenderCount(repo.Issues.Where(issue=>IsVisible(issue)).Count(), tab)
+                        </Template>
+                        <ChildContent>
+                            <div class="form-group">
+                                <input class="form-control" type="text" placeholder="Filter..." @bind="Filter" @bind:event="oninput">
+                            </div>
+                            <table class="table table-striped table-hover">
+                                <thead class="thead-light">
                                     <tr>
-                                        <th scope="row" nowrap>
-                                            <GitMergeVisual State="@item.State.StringValue" />
-                                            <a target="_blank" href="@item.PullRequest.HtmlUrl">@item.Number</a>
-                                        </th>
-                                        <td>
-                                            <a class="gh-issue-title" href="@item.PullRequest.HtmlUrl" target="_blank">@item.Title</a>
-                                            <span>
-                                                @foreach (var label in item.Labels)
-                                                {
-                                                    <span class="gh-label" style="color:@Colors.GetReadableForeColorAsString(label.Color);background-color:#@label.Color">@label.Name.Emojify()</span>
-                                                }
-                                            </span>
-                                            <div class="gh-details-cell">
-                                                @item.Org/@item.Repo#@item.Number @item.CreatedAt.Humanize() by <span class="ml-2 mr-1 oi oi-person text-muted"></span>@item.User.Login
-
-                                                @if (item.Milestone != null)
-                                                {
-                                                    <span class="ml-2 mr-1 oi oi-signpost text-muted" aria-hidden="true" title="milestone"></span>@item.Milestone.Title
-                                                }
-                                            </div>
-                                        </td>
-                                        <td>@item.Milestone?.Title</td>
+                                        <th scope="col" width="90" class="sticky-top">ID</th>
+                                        <th scope="col" class="sticky-top">@L["TitleHeader"]</th>
+                                        <th scope="col" width="80" class="sticky-top">@L["MilestoneHeader"]</th>
                                     </tr>
-                                </Virtualize>
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody id="dataTable">
+                                    <Virtualize Context="item" TItem="SimpleIssue" Items="@repo.Issues.Where(issue=>IsVisible(issue)).ToList()">
+                                        <tr>
+                                            <th scope="row" nowrap>
+                                                <GitMergeVisual State="@item.State.StringValue" />
+                                                <a target="_blank" href="@item.PullRequest.HtmlUrl">@item.Number</a>
+                                            </th>
+                                            <td>
+                                                <a class="gh-issue-title" href="@item.PullRequest.HtmlUrl" target="_blank">@item.Title</a>
+                                                <span>
+                                                    @foreach (var label in item.Labels)
+                                                    {
+                                                        <span class="gh-label" style="color:@Colors.GetReadableForeColorAsString(label.Color);background-color:#@label.Color">@label.Name.Emojify()</span>
+                                                    }
+                                                </span>
+                                                <div class="gh-details-cell">
+                                                    @item.Org/@item.Repo#@item.Number @item.CreatedAt.Humanize() by <span class="ml-2 mr-1 oi oi-person text-muted"></span>@item.User.Login
+
+                                                    @if (item.Milestone != null)
+                                                    {
+                                                        <span class="ml-2 mr-1 oi oi-signpost text-muted" aria-hidden="true" title="milestone"></span>@item.Milestone.Title
+                                                    }
+                                                </div>
+                                            </td>
+                                            <td>@item.Milestone?.Title</td>
+                                        </tr>
+                                    </Virtualize>
+                                </tbody>
+                            </table>
+
+                        </ChildContent>
                     </RadzenTabsItem>
                 }
             </Tabs>
@@ -80,12 +86,21 @@ else
 
     public string Filter { get; set; }
 
+    public int SelectedIndex { get; set; }
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
             await LoadFromCache();
         }
+    }
+
+    public MarkupString RenderCount(int count, RadzenTabsItem tab)
+    {
+        var shade = tab.IsSelected ? "light" : "dark";
+        var badge = $"<span class=\"badge badge-{shade}\">{count.ToString()}</span>";
+        return new MarkupString(badge);
     }
 
     public bool IsTabSelected(string name)
