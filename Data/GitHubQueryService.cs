@@ -124,7 +124,7 @@ namespace TacticView.Data
             if (File.Exists(cache))
             {
                 // get file time
-                cacheDate = File.GetCreationTime(cache);
+                cacheDate = File.GetLastWriteTime(cache);
 
                 // load json file
                 using (var stream = File.OpenRead(Path.Combine(_env.ContentRootPath, $"{label}.json")))

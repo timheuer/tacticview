@@ -70,7 +70,7 @@ else
                 }
             </Tabs>
         </RadzenTabs>
-        <span class="ml-2 mr-1 oi oi-reload" @onclick="ForceRefresh" title="Refresh cache" style="cursor:pointer"></span><span>Cached data: @CacheDate.Humanize()</span>
+        <span class="ml-2 mr-1 oi oi-reload" @onclick="ForceRefreshAsync" title="Refresh cache" style="cursor:pointer"></span><span>Cached data: @CacheDate.Humanize()</span>
     }
 }
 @code {
@@ -92,7 +92,7 @@ else
     {
         if (firstRender)
         {
-            await LoadFromCache();
+            await LoadFromCacheAsync();
         }
     }
 
@@ -111,14 +111,14 @@ else
         return (q.ToString().ToLowerInvariant() == name.ToLowerInvariant());
     }
 
-    public async Task ForceRefresh()
+    public async Task ForceRefreshAsync()
     {
         Repositories = null;
         await IssuesService.GetReposAndIssuesAsync(Label, IsOpenOnly);
-        await LoadFromCache();
+        await LoadFromCacheAsync();
     }
 
-    public async Task LoadFromCache()
+    public async Task LoadFromCacheAsync()
     {
         var tuple = await IssuesService.GetCachedReposAndIssuesAsync(Label, IsOpenOnly);
         Repositories = tuple.Item1;
