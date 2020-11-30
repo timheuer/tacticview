@@ -88,12 +88,9 @@ else
 
     public int SelectedIndex { get; set; }
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+    protected override async Task OnInitializedAsync()
     {
-        if (firstRender)
-        {
-            await LoadFromCacheAsync();
-        }
+        await LoadFromCacheAsync();
     }
 
     public MarkupString RenderCount(int count, RadzenTabsItem tab)
@@ -124,7 +121,7 @@ else
         Repositories = tuple.Item1;
         CacheDate = tuple.Item2;
 
-        StateHasChanged();
+        //StateHasChanged();
     }
 
     public bool IsVisible(SimpleIssue issue)
