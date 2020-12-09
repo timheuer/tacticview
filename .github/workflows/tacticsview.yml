@@ -8,6 +8,14 @@ on:
     - '**/*.gitignore'
     - '**/*.gitattributes'
     - '**/translations.yaml'
+  workflow_dispatch:
+    branches:
+    - master
+    paths-ignore:
+    - '**/*.md'
+    - '**/*.gitignore'
+    - '**/*.gitattributes'
+
 env:
   AZURE_WEBAPP_NAME: tacticsview
   AZURE_WEBAPP_PACKAGE_PATH: ./published
