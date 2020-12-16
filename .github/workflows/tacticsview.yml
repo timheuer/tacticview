@@ -31,6 +31,7 @@ env:
   DOTNET_MULTILEVEL_LOOKUP: 0
 jobs:
   build:
+    name: Build
     if: github.event_name == 'push' && contains(toJson(github.event.commits), '***NO_CI***') == false && contains(toJson(github.event.commits), '[ci skip]') == false && contains(toJson(github.event.commits), '[skip ci]') == false
     runs-on: ubuntu-latest
     steps:
@@ -47,14 +48,29 @@ jobs:
       run: dotnet test "${{ env.PROJECT_PATH }}" --no-build
     - name: Publish app for deploy
       run: dotnet publish "${{ env.PROJECT_PATH }}" --configuration ${{ env.CONFIGURATION }} --no-build --output "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}" -r linux-x64
-    - name: Deploy to Azure WebApp
-      uses: azure/webapps-deploy@v2
-      with:
-        app-name: ${{ env.AZURE_WEBAPP_NAME }}
-        publish-profile: ${{ env.AZURE_WEBAPP_PUBLISH_PROFILE }}
-        package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
     - name: Publish Artifacts
       uses: actions/upload-artifact@v1.0.0
       with:
         name: webapp
         path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+
+  deploy:
+    needs: build
+    environment:
+      name: production
+      url: https://tacticsview.azurewebsites.net
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+    # Download artifacts
+    - name: Download artifacts
+      uses: actions/download-artifact@v2
+      with:
+        name: webapp
+
+    # Deploy to App Service Linux
+    - name: Deploy to Azure WebApp
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: ${{ env.AZURE_WEBAPP_NAME }}
+        publish-profile: ${{ env.AZURE_WEBAPP_PUBLISH_PROFILE }}
