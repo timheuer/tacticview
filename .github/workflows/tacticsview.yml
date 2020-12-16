@@ -54,12 +54,12 @@ jobs:
         name: webapp
         path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
 
-  deploy:
+  staging:
     needs: build
+    name: Deploy to staging
     environment:
-      name: production
-      url: https://tacticsview.azurewebsites.net
-    name: Deploy
+        name: staging
+        url: ${{ steps.deploy_staging.outputs.webapp-url }}
     runs-on: ubuntu-latest
     steps:
     # Download artifacts
@@ -70,6 +70,30 @@ jobs:
 
     # Deploy to App Service Linux
     - name: Deploy to Azure WebApp
+      uses: azure/webapps-deploy@v2
+      id: deploy_staging
+      with:
+        app-name: ${{ env.AZURE_WEBAPP_NAME }}
+        publish-profile: ${{ env.AZURE_WEBAPP_PUBLISH_PROFILE }}
+        slot-name: staging
+
+  deploy:
+    needs: staging
+    environment:
+      name: production
+      url: ${{ steps.deploy_production.outputs.webapp-url }}
+    name: Deploy to production
+    runs-on: ubuntu-latest
+    steps:
+    # Download artifacts
+    - name: Download artifacts
+      uses: actions/download-artifact@v2
+      with:
+        name: webapp
+
+    # Deploy to App Service Linux
+    - name: Deploy to Azure WebApp
+      id: deploy_production
       uses: azure/webapps-deploy@v2
       with:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
