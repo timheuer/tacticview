@@ -41,13 +41,13 @@ jobs:
       with:
         dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
     - name: Restore packages
-      run: dotnet restore "${{ env.PROJECT_PATH }}" -r linux-x64
+      run: dotnet restore "${{ env.PROJECT_PATH }}"
     - name: Build app
-      run: dotnet build "${{ env.PROJECT_PATH }}" --configuration ${{ env.CONFIGURATION }} --no-restore -r linux-x64 /p:SourceRevisionId=${{ github.sha }}
+      run: dotnet build "${{ env.PROJECT_PATH }}" --configuration ${{ env.CONFIGURATION }} --no-restore /p:SourceRevisionId=${{ github.sha }}
     - name: Test app
       run: dotnet test "${{ env.PROJECT_PATH }}" --no-build
     - name: Publish app for deploy
-      run: dotnet publish "${{ env.PROJECT_PATH }}" --configuration ${{ env.CONFIGURATION }} --no-build --output "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}" -r linux-x64
+      run: dotnet publish "${{ env.PROJECT_PATH }}" --configuration ${{ env.CONFIGURATION }} --no-build --output "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}"
     - name: Publish Artifacts
       uses: actions/upload-artifact@v1.0.0
       with:
