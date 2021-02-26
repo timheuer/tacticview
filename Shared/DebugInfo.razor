@@ -13,7 +13,8 @@
         <p class="text-muted">
             @L["CreationLabel"] <a href="mailto:timheuer">Tim Heuer</a><br />
             GitHub API Limits: @GitHubQueryService.REQUESTS_LEFT/@GitHubQueryService.REQUESTS_PER_HOUR resetting @GitHubQueryService.LIMIT_RESET?.Humanize()<br />
-            Running on @RuntimeInformation.FrameworkDescription on @RuntimeInformation.OSDescription in @WebHostEnv.EnvironmentName <br />
+            Running on @RuntimeInformation.FrameworkDescription in @WebHostEnv.EnvironmentName <br />
+            Host OS: @RuntimeInformation.OSDescription <br/>
             @L["DeployLabel"] <a href="https://github.com/timheuer/tacticview/commit/@AppVersionInfo.GitHash" target="_blank">@AppVersionInfo.ShortGitHash</a>
         </p>
     </div>
