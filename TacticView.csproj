@@ -4,14 +4,14 @@
     <UserSecretsId>5035e08c-eaed-4cd8-8391-c9d038f86c21</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="GEmojiSharp" Version="1.4.0"/>
-    <PackageReference Include="Humanizer" Version="2.8.26"/>
-    <PackageReference Include="Octokit" Version="0.50.0"/>
-    <PackageReference Include="Radzen.Blazor" Version="3.1.1"/>
+    <PackageReference Include="GEmojiSharp" Version="1.4.0" />
+    <PackageReference Include="Humanizer" Version="2.8.26" />
+    <PackageReference Include="Octokit" Version="0.50.0" />
+    <PackageReference Include="Radzen.Blazor" Version="3.1.5" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Resources\UIStrings.en.resx">
-      <Generator/>
+      <Generator />
     </EmbeddedResource>
   </ItemGroup>
 </Project>
