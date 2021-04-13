@@ -21,7 +21,7 @@ else
                 {
                     <RadzenTabsItem Selected="@IsTabSelected(repo.Name)">
                         <Template Context="tab">
-                            @repo.Name&nbsp;@RenderCount(repo.Issues.Where(issue=>IsVisible(issue)).Count(), tab)
+                            @repo.Name&nbsp;@RenderCount(repo.Issues.Where(issue => IsVisible(issue)).Count(), tab)
                         </Template>
                         <ChildContent>
                             <div class="form-group">
@@ -70,8 +70,9 @@ else
                 }
             </Tabs>
         </RadzenTabs>
-        <span class="ml-2 mr-1 oi oi-reload" @onclick="ForceRefreshAsync" title="Refresh cache" style="cursor:pointer"></span><span>Cached data: @CacheDate.Humanize()</span>
     }
+    <br/>
+    <span class="ml-2 mr-1 oi oi-reload" @onclick="ForceRefreshAsync" title="Refresh cache" style="cursor:pointer"></span><span>Cached data: @CacheDate.Humanize()</span>
 }
 @code {
     [Parameter] public string Label { get; set; }

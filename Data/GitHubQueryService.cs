@@ -107,7 +107,8 @@ namespace TacticView.Data
                     allRepo.Issues.AddRange(issues);
                 };
             }
-            thelist.Repositories.Add(allRepo);
+            if (thelist.Repositories.Count > 0)
+                thelist.Repositories.Add(allRepo);
 
             // write to disk
             using (var stream = File.Create(Path.Combine(_env.ContentRootPath, $"{label}.json")))
