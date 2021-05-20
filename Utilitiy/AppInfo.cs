@@ -8,6 +8,13 @@ namespace TacticView.Utilitiy
 {
     public class AppInfo
     {
+        public static string Token { get; set; } = null;
+
+        public static string AccessToken { get; set; }
+        public const string GITHUB_CLIENT_HEADER = "timheuer-microsoft-com";
+        public static string GITHUB_CLIENT_ID { get; set; } = null;
+        public static string GITHUB_CLIENT_SECRET { get; set; } = null;
+
         public AppInfo() { }
 
         private string _gitHash;

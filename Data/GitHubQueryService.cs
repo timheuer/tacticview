@@ -8,6 +8,7 @@ using System.IO;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using TacticView.Utilitiy;
 
 namespace TacticView.Data
 {
@@ -35,8 +36,8 @@ namespace TacticView.Data
         public async Task<List<SimpleIssue>> GetPullRequestsAsIssuesAsync(string owner, string repo, string tag, bool openOnly = true)
         {
             // create the github client
-            GitHubClient client = new GitHubClient(new ProductHeaderValue(Startup.GITHUB_CLIENT_HEADER));
-            var basic = new Credentials(Startup.Token);
+            GitHubClient client = new GitHubClient(new ProductHeaderValue(AppInfo.GITHUB_CLIENT_HEADER));
+            var basic = new Credentials(AppInfo.Token);
             client.Credentials = basic;
 
             // create the request parameters
@@ -164,8 +165,8 @@ namespace TacticView.Data
         public async Task<RateLimit> GetApiInfo()
         {
             // create the github client
-            GitHubClient client = new GitHubClient(new ProductHeaderValue(Startup.GITHUB_CLIENT_HEADER));
-            var basic = new Credentials(Startup.Token);
+            GitHubClient client = new GitHubClient(new ProductHeaderValue(AppInfo.GITHUB_CLIENT_HEADER));
+            var basic = new Credentials(AppInfo.Token);
             client.Credentials = basic;
 
             var limits = await client.Miscellaneous.GetRateLimits();

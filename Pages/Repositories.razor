@@ -21,7 +21,7 @@
     {
         if (haveToken)
         {
-            var client = new GitHubClient(new ProductHeaderValue(Startup.GITHUB_CLIENT_HEADER));
+            var client = new GitHubClient(new ProductHeaderValue(AppInfo.GITHUB_CLIENT_HEADER));
 
             var creds = new Credentials(token);
             client.Credentials = creds;

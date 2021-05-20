@@ -11,16 +11,16 @@
         {
             // TODO: Check to verify state against expected for valid request
             var accessCode = code.First();
-            var client = new GitHubClient(new ProductHeaderValue(Startup.GITHUB_CLIENT_HEADER));
+            var client = new GitHubClient(new ProductHeaderValue(AppInfo.GITHUB_CLIENT_HEADER));
 
             // create the oauth token request
-            var request = new OauthTokenRequest(Startup.GITHUB_CLIENT_ID, Startup.GITHUB_CLIENT_SECRET, accessCode);
+            var request = new OauthTokenRequest(AppInfo.GITHUB_CLIENT_ID, AppInfo.GITHUB_CLIENT_SECRET, accessCode);
             // TODO: Need to guard against failed oauth token request
             var requestToken = await client.Oauth.CreateAccessToken(request);
             var accessToken = requestToken.AccessToken;
 
             await localStorage.SetAsync("token", accessToken);
-            Startup.AccessToken = accessToken;
+            AppInfo.AccessToken = accessToken;
 
             navManager.NavigateTo("/");
         }

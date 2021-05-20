@@ -18,8 +18,8 @@
 
     void GetLoginUrl()
     {
-        var client = new GitHubClient(new ProductHeaderValue(Startup.GITHUB_CLIENT_HEADER));
-        var request = new OauthLoginRequest(Startup.GITHUB_CLIENT_ID)
+        var client = new GitHubClient(new ProductHeaderValue(AppInfo.GITHUB_CLIENT_HEADER));
+        var request = new OauthLoginRequest(AppInfo.GITHUB_CLIENT_ID)
         {
             State = Guid.NewGuid().ToString(),
             Scopes = { "repo" }
