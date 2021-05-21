@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using Radzen;
 using TacticView.Data;
@@ -8,10 +9,25 @@ using TacticView.Utilitiy;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// BUG: Workaround for https://github.com/dotnet/aspnetcore/issues/32415
+builder.Environment.WebRootPath = System.IO.Path.Combine(builder.Environment.ContentRootPath, "wwwroot");
+var fixedWebRootFileProvider = new PhysicalFileProvider(builder.Environment.WebRootPath);
+switch (builder.Environment.WebRootFileProvider)
+{
+    case PhysicalFileProvider _:
+        builder.Environment.WebRootFileProvider = fixedWebRootFileProvider;
+        break;
+    case CompositeFileProvider cfp when cfp.FileProviders is IFileProvider[] providers:
+        providers[0] = fixedWebRootFileProvider;
+        break;
+}
+
+
 var services = builder.Services;
 
 services.AddRazorPages();
-services.AddServerSideBlazor();
+services.AddServerSideBlazor()
+    .AddCircuitOptions(options => options.DetailedErrors = true);
 services.AddSingleton<GitHubQueryService>();
 services.AddScoped<AppState>();
 services.AddScoped<NotificationService>();
@@ -27,12 +43,14 @@ services.Configure<RequestLocalizationOptions>(options =>
         .AddSupportedCultures(supportedCultures)
         .AddSupportedUICultures(supportedCultures);
 });
-
-AppInfo.Token = builder.Configuration["GITHUB_TOKEN"];
-AppInfo.GITHUB_CLIENT_ID = builder.Configuration["GITHUB_CLIENT_ID"];
-AppInfo.GITHUB_CLIENT_SECRET = builder.Configuration["GITHUB_CLIENT_SECRET"];
+services.AddHealthChecks();
 
 var app = builder.Build();
+
+AppInfo.Token = app.Configuration["GITHUB_TOKEN"];
+AppInfo.GITHUB_CLIENT_ID = app.Configuration["GITHUB_CLIENT_ID"];
+AppInfo.GITHUB_CLIENT_SECRET = app.Configuration["GITHUB_CLIENT_SECRET"];
+
 
 if (app.Environment.IsDevelopment())
 {
@@ -56,6 +74,9 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.MapHealthChecks("/health").AllowAnonymous();
 app.MapBlazorHub();
 app.MapDefaultControllerRoute();
 app.MapFallbackToPage("/_Host");
+
+await app.RunAsync();
