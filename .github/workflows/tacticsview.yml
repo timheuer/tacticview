@@ -2,7 +2,7 @@ name: Deploy to tacticsview
 on:
   push:
     branches:
-    - master
+    - main
     paths-ignore:
     - '**/*.md'
     - '**/*.gitignore'
@@ -10,7 +10,7 @@ on:
     - '**/translations.yaml'
   workflow_dispatch:
     branches:
-    - master
+    - main
     paths-ignore:
     - '**/*.md'
     - '**/*.gitignore'
