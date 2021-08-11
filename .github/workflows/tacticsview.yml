@@ -21,7 +21,7 @@ env:
   AZURE_WEBAPP_PACKAGE_PATH: ./published
   AZURE_WEBAPP_PUBLISH_PROFILE: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
   CONFIGURATION: Release
-  DOTNET_CORE_VERSION: 6.0.100-preview.7.21323.4
+  DOTNET_CORE_VERSION: 6.0.100-preview.7.21379.14
   PROJECT_PATH: TacticView.csproj
   DOTNET_CLI_TELEMETRY_OPTOUT: 1
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
@@ -32,12 +32,11 @@ env:
 jobs:
   build:
     name: Build
-    if: github.event_name == 'push' && contains(toJson(github.event.commits), '***NO_CI***') == false && contains(toJson(github.event.commits), '[ci skip]') == false && contains(toJson(github.event.commits), '[skip ci]') == false
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET Core SDK ${{ env.DOTNET_CORE_VERSION }}
-      uses: actions/setup-dotnet@v1.8.0
+      uses: actions/setup-dotnet@v1.8.1
       with:
         dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
         include-prerelease: true
