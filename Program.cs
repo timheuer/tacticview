@@ -9,20 +9,6 @@ using TacticView.Utilitiy;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// BUG: Workaround for https://github.com/dotnet/aspnetcore/issues/32415
-builder.Environment.WebRootPath = System.IO.Path.Combine(builder.Environment.ContentRootPath, "wwwroot");
-var fixedWebRootFileProvider = new PhysicalFileProvider(builder.Environment.WebRootPath);
-switch (builder.Environment.WebRootFileProvider)
-{
-    case PhysicalFileProvider _:
-        builder.Environment.WebRootFileProvider = fixedWebRootFileProvider;
-        break;
-    case CompositeFileProvider cfp when cfp.FileProviders is IFileProvider[] providers:
-        providers[0] = fixedWebRootFileProvider;
-        break;
-}
-
-
 var services = builder.Services;
 
 services.AddRazorPages();
