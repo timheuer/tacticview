@@ -23,7 +23,7 @@
       },
       "applicationUrl": "http://localhost:51511/"
     },
-    "WSL 2": {
+    "WSL": {
       "commandName": "WSL2",
       "launchBrowser": true,
       "launchUrl": "http://localhost:51511/",
