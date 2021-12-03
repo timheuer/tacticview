@@ -10,9 +10,9 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="GEmojiSharp" Version="1.4.0" />
-    <PackageReference Include="Humanizer" Version="2.11.10" />
+    <PackageReference Include="Humanizer" Version="2.13.14" />
     <PackageReference Include="Octokit" Version="0.50.0" />
-    <PackageReference Include="Radzen.Blazor" Version="3.10.2" />
+    <PackageReference Include="Radzen.Blazor" Version="3.13.3" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Resources\UIStrings.en.resx">
