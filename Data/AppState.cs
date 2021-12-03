@@ -1,32 +1,31 @@
-﻿using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
 using Octokit;
-using System.Threading.Tasks;
 
-namespace TacticView.Data
+namespace TacticView.Data;
+
+public class AppState
 {
-    public class AppState
+    private ProtectedLocalStorage _storage;
+
+    public AppState(ProtectedLocalStorage localStorage)
     {
-        private ProtectedLocalStorage _storage;
+        _storage = localStorage;
+    }
 
-        public AppState(ProtectedLocalStorage localStorage) 
+    public bool IsLoggedIn { get; private set; } = false;
+    public string UserToken { get; private set; }
+    public User User { get; set; }
+
+    public async Task<bool> CheckIfAuthenticated()
+    {
+        var token = await _storage.GetAsync<string>("token");
+        if (!string.IsNullOrEmpty(token.Value))
         {
-            _storage = localStorage;
+            UserToken = token.Value;
+            IsLoggedIn = true;
+            return true;
         }
-
-        public bool IsLoggedIn { get; private set; } = false;
-        public string UserToken { get; private set; }
-        public User User { get; set; }
-
-        public async Task<bool> CheckIfAuthenticated()
-        {
-            var token = await _storage.GetAsync<string>("token");
-            if (!string.IsNullOrEmpty(token.Value))
-            {
-                UserToken = token.Value;
-                IsLoggedIn = true;
-                return true;
-            }
-            return false;
-        }
+        return false;
     }
 }

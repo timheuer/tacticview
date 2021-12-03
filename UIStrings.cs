@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace TacticView
+namespace TacticView;
+
+public class UIStrings
 {
-    public class UIStrings
-    {
-    }
 }
