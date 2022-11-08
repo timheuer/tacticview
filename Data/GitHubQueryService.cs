@@ -169,7 +169,7 @@ public class GitHubQueryService
         var basic = new Credentials(AppInfo.Token);
         client.Credentials = basic;
 
-        var limits = await client.Miscellaneous.GetRateLimits();
+        var limits = await client.RateLimit.GetRateLimits();
         return limits.Rate;
     }
 }

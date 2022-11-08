@@ -39,7 +39,7 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
-        include-prerelease: true
+        dotnet-quality: 'ga'
 
     - name: Restore packages
       run: dotnet restore "${{ env.PROJECT_PATH }}" -r linux-x64
