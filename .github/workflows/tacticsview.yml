@@ -34,12 +34,12 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Setup .NET Core SDK ${{ env.DOTNET_CORE_VERSION }}
-      uses: actions/setup-dotnet@v2
+      uses: actions/setup-dotnet@v3
       with:
         dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
-        include-prerelease: true
+        dotnet-quality: 'ga'
 
     - name: Restore packages
       run: dotnet restore "${{ env.PROJECT_PATH }}" -r linux-x64
@@ -50,7 +50,7 @@ jobs:
     - name: Publish app for deploy
       run: dotnet publish "${{ env.PROJECT_PATH }}" --configuration ${{ env.CONFIGURATION }} --no-build --output "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}" -r linux-x64 --self-contained
     - name: Publish Artifacts
-      uses: actions/upload-artifact@v1.0.0
+      uses: actions/upload-artifact@v3
       with:
         name: webapp
         path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
@@ -65,7 +65,7 @@ jobs:
     steps:
     # Download artifacts
     - name: Download artifacts
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v3
       with:
         name: webapp
 
@@ -88,7 +88,7 @@ jobs:
     steps:
     # Download artifacts
     - name: Download artifacts
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v3
       with:
         name: webapp
 
