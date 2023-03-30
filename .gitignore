@@ -437,3 +437,6 @@ $RECYCLE.BIN/
 !.vscode/extensions.json
 /my.secrets
 /.ionide
+.sarif/
+.idea/
+.config/
