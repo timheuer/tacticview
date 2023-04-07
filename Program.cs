@@ -28,6 +28,10 @@ services.Configure<RequestLocalizationOptions>(options =>
         .AddSupportedUICultures(supportedCultures);
 });
 services.AddHealthChecks();
+services.AddDistributedRedisCache(option =>
+{
+    option.Configuration = builder.Configuration["DataCache"];
+});
 
 var app = builder.Build();
 
