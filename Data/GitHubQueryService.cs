@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Humanizer;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Configuration;
 using Octokit;
 using TacticView.Utilitiy;
@@ -19,12 +21,16 @@ public class GitHubQueryService
     public static string LIMIT_RESET;
     private List<Repo> _repos;
     private IWebHostEnvironment _env;
+    private readonly IDistributedCache _cache;
+    private readonly IConfiguration _config;
 
-    public GitHubQueryService(IConfiguration configuration, IWebHostEnvironment environment)
+    public GitHubQueryService(IConfiguration configuration, IWebHostEnvironment environment, IDistributedCache cache)
     {
         var repos = configuration["REPO_LIST"].Split(',');
         _repos = new List<Repo>();
         _env = environment;
+        _cache = cache;
+        _config = configuration;
 
         foreach (var repo in repos)
         {
@@ -109,43 +115,48 @@ public class GitHubQueryService
             };
         }
         if (thelist.Repositories.Count > 0)
+        {
             thelist.Repositories.Add(allRepo);
+            await _cache.SetAsync(label, Serialize(thelist.Repositories));
+            await _cache.SetStringAsync($"{label}-cacheDate", DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString());
+        }
 
         // write to disk
-        using (var stream = File.Create(Path.Combine(_env.ContentRootPath, $"{label}.json")))
-            await JsonSerializer.SerializeAsync(stream, thelist.Repositories, CreateOptions());
+        if (!String.IsNullOrEmpty(_config["DEBUG_REPO_DATA"]) && _config["DEBUG_REPO_DATA"].ToLowerInvariant() == "true")
+        {
+            using (var stream = File.Create(Path.Combine(_env.ContentRootPath, $"{label}.json")))
+                await JsonSerializer.SerializeAsync(stream, thelist.Repositories, CreateOptions());
+        }
+    }
+
+    public static byte[] Serialize<T>(List<T> list)
+    {
+        string jsonString = JsonSerializer.Serialize(list);
+        return Encoding.UTF8.GetBytes(jsonString);
+    }
+
+    public static List<T> Deserialize<T>(byte[] data)
+    {
+        string jsonString = Encoding.UTF8.GetString(data);
+        return JsonSerializer.Deserialize<List<T>>(jsonString);
     }
 
     public async Task<Tuple<List<TriageRepository>, DateTimeOffset>> GetCachedReposAndIssuesAsync(string label, bool isOpenOnly = true)
     {
-        List<TriageRepository> thelist = new();
-        var cache = Path.Combine(_env.ContentRootPath, $"{label}.json");
         DateTimeOffset cacheDate;
 
-        // check if file exists
-        if (File.Exists(cache))
+        // get from the cache
+        var cacheData = await _cache.GetAsync(label);
+        
+        if (cacheData == null)
         {
-            // get file time
-            cacheDate = File.GetLastWriteTime(cache);
-
-            // load json file
-            using (var stream = File.OpenRead(Path.Combine(_env.ContentRootPath, $"{label}.json")))
-            {
-                thelist = await JsonSerializer.DeserializeAsync<List<TriageRepository>>(stream, CreateOptions());
-            }
-        }
-        else
-        {
-            // create the cache and read it
             await GetReposAndIssuesAsync(label, isOpenOnly);
-            using (var stream = File.OpenRead(Path.Combine(_env.ContentRootPath, $"{label}.json")))
-            {
-                thelist = await JsonSerializer.DeserializeAsync<List<TriageRepository>>(stream, CreateOptions());
-            }
-
-            cacheDate = DateTime.UtcNow;
+            cacheData = await _cache.GetAsync(label);
         }
 
+        var unixTimestamp = await _cache.GetStringAsync($"{label}-cacheDate");
+        cacheDate = DateTimeOffset.FromUnixTimeSeconds(Convert.ToUInt32(unixTimestamp));
+        var thelist = Deserialize<TriageRepository>(cacheData);
         return new Tuple<List<TriageRepository>, DateTimeOffset>(thelist, cacheDate);
     }
 
