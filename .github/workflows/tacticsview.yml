@@ -102,8 +102,6 @@ jobs:
 
   refresh-cache:
     needs: deploy
-    environment:
-      name: production
     name: Refresh cache
     runs-on: ubuntu-latest
     steps:
