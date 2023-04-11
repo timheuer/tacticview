@@ -1,0 +1,45 @@
+﻿@page "/about"
+@using Microsoft.Extensions.Configuration;
+@inject IStringLocalizer<UIStrings> L
+@inject IConfiguration config
+@code {
+    List<string> repos = null;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            // get the list of repos from the config
+            repos = config["REPO_LIST"]?.Split(',').ToList();
+            StateHasChanged();
+        }
+    }
+}
+<h1>@L["AboutHeader"]</h1>
+
+<p>
+    TacticsView is intended to be a simple helper to view servicing-based proposals for the .NET team.  It is based on tracking a set 
+    of GitHub repositories, and then using the GitHub API to query for issues that are tagged with a specific label.
+</p>
+
+<h2>How it works</h2>
+
+<p>
+    Each pull request is tracked in a GitHub repository.  The repository is then added to the list of repositories that TacticsView tracks.
+    When the repository is added, the GitHub API is queried for <strong>pull requests</strong> that are tagged with the label "servicing-approved."
+</p>
+
+<h2>Tracked Repositories</h2>
+
+<p>
+    The following repositories are currently tracked by TacticsView:
+    <ul>
+        @if (repos != null)
+        {
+            foreach (var item in repos)
+            {
+                <li><a href="https://github.com/@item" target="_blank">@item</a></li>
+            }
+        }
+    </ul>
+</p>
