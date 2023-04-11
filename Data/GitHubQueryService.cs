@@ -115,11 +115,10 @@ public class GitHubQueryService
             };
         }
         if (thelist.Repositories.Count > 0)
-        {
             thelist.Repositories.Add(allRepo);
-            await _cache.SetAsync(label, Serialize(thelist.Repositories));
-            await _cache.SetStringAsync($"{label}-cacheDate", DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString());
-        }
+
+        await _cache.SetAsync(label, Serialize(thelist.Repositories));
+        await _cache.SetStringAsync($"{label}-cacheDate", DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString());
 
         // write to disk
         if (!String.IsNullOrEmpty(_config["DEBUG_REPO_DATA"]) && _config["DEBUG_REPO_DATA"].ToLowerInvariant() == "true")
