@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <!--<RestoreSources>
       $(RestoreSources);
       https://api.nuget.org/v3/index.json;
@@ -18,8 +18,8 @@
     <PackageReference Include="GEmojiSharp" Version="3.0.0" />
     <PackageReference Include="Humanizer" Version="2.14.1" />
     <PackageReference Include="Microsoft.Extensions.Caching.Redis" Version="2.2.0" />
-    <PackageReference Include="Octokit" Version="5.0.3" />
-    <PackageReference Include="Radzen.Blazor" Version="4.8.4" />
+    <PackageReference Include="Octokit" Version="5.0.4" />
+    <PackageReference Include="Radzen.Blazor" Version="4.9.1" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Resources\UIStrings.en.resx">
