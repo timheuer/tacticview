@@ -3,13 +3,13 @@ name: "Translations"
 on:
   push:
     branches:
-      - master
+      - main
     paths:
     - '**.en.resx'
 
   workflow_dispatch:
     branches:
-      - master
+      - main
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
