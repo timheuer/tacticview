@@ -87,7 +87,8 @@ jobs:
         
     # Logout of Azure
     - name: 🔐 Azure Logout
-      uses: azure/logout@v1
+      run: |
+        az logout
 
   deploy:
     needs: staging
@@ -119,7 +120,8 @@ jobs:
         
     # Logout of Azure
     - name: 🔐 Azure Logout
-      uses: azure/logout@v1
+      run: |
+        az logout
 
   refresh-cache:
     needs: deploy
