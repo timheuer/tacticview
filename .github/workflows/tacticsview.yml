@@ -1,4 +1,4 @@
-name: Deploy to tacticsview
+﻿name: Deploy to tacticsview
 on:
   push:
     branches:
@@ -35,21 +35,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: Setup .NET Core SDK ${{ env.DOTNET_CORE_VERSION }}
+    - name: 🧰 Setup .NET Core SDK ${{ env.DOTNET_CORE_VERSION }}
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
         dotnet-quality: 'preview'
 
-    - name: Restore packages
+    - name: ♻️ Restore packages
       run: dotnet restore "${{ env.PROJECT_PATH }}" -r linux-x64
-    - name: Build app
+    - name: ⚒️ Build app
       run: dotnet build "${{ env.PROJECT_PATH }}" --configuration ${{ env.CONFIGURATION }} --no-restore /p:SourceRevisionId=${{ github.sha }} -r linux-x64 --self-contained
-    - name: Test app
+    - name: 🧪 Test app
       run: dotnet test "${{ env.PROJECT_PATH }}" --no-build
-    - name: Publish app for deploy
+    - name: 🖨️ Publish app for deploy
       run: dotnet publish "${{ env.PROJECT_PATH }}" --configuration ${{ env.CONFIGURATION }} --no-build --output "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}" -r linux-x64 --self-contained
-    - name: Publish Artifacts
+    - name: ⬆️ Publish Artifacts
       uses: actions/upload-artifact@v3
       with:
         name: webapp
@@ -64,18 +64,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     # Download artifacts
-    - name: Download artifacts
+    - name: ⬇️ Download artifacts
       uses: actions/download-artifact@v3
       with:
         name: webapp
-
+    
+        
+    # Login to Azure
+    - name: 🔐 Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_TACTICSVIEW_SP }}
+        
     # Deploy to App Service Linux
-    - name: Deploy to Azure WebApp
+    - name: 🎛️ Deploy to Azure WebApp
       uses: azure/webapps-deploy@v2
       id: deploy_staging
       with:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
-        publish-profile: ${{ env.AZURE_WEBAPP_PUBLISH_PROFILE }}
         slot-name: staging
 
   deploy:
@@ -87,23 +93,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     # Download artifacts
-    - name: Download artifacts
+    - name: ⬇️ Download artifacts
       uses: actions/download-artifact@v3
       with:
         name: webapp
 
+    # Login to Azure
+    - name: 🔐 Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_TACTICSVIEW_SP }}
+
     # Deploy to App Service Linux
-    - name: Deploy to Azure WebApp
+    - name: 🎛️ Deploy to Azure WebApp
       id: deploy_production
       uses: azure/webapps-deploy@v2
       with:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
-        publish-profile: ${{ env.AZURE_WEBAPP_PUBLISH_PROFILE }}
 
   refresh-cache:
     needs: deploy
     name: Refresh cache
     runs-on: ubuntu-latest
     steps:
-    - name: Refresh cache
+    - name: 🔃 Refresh cache
       run: curl https://tacticsview.azurewebsites.net/refresh-cache
