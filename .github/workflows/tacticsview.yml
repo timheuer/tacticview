@@ -82,7 +82,7 @@ jobs:
       with:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
         slot-name: staging
-        package: webapp
+        package: .
         
     # Logout of Azure
     - name: 🔐 Azure Logout
@@ -115,7 +115,7 @@ jobs:
       uses: azure/webapps-deploy@v2
       with:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
-        package: webapp
+        package: .
         
     # Logout of Azure
     - name: 🔐 Azure Logout
