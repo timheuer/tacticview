@@ -5,6 +5,10 @@ labels: [track-repo,bug]
 assignees:
   - timheuer
 body:
+- type: markdown
+  attributes:
+    value: |
+      Be sure to check already tracked repos: https://tacticsview.azurewebsites.net/about
 - type: input
   attributes:
     label: Repo URL
