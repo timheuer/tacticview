@@ -34,5 +34,5 @@ body:
     description: If this is specific to a repo, please provide the full URL
     placeholder: |
       https://github.com/dotnet/aspnetcore
-    validations:
-      required: false
+  validations:
+    required: false
