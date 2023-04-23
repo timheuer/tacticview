@@ -1,30 +1,38 @@
----
 name: 🐞 Bug
-about: File a bug/issue
-title: '[BUG] <title>'
-labels: bug
-assignees: 'timheuer'
-
----
-
-<!--
-Note: Please search to see if an issue already exists for the bug you encountered.
--->
-
-### Current Behavior:
-<!-- A concise description of what you're experiencing. -->
-
-### Expected Behavior:
-<!-- A concise description of what you expected to happen. -->
-
-### Steps To Reproduce:
-<!--
-Example: steps to reproduce the behavior:
-1. In this environment...
-2. With this config...
-3. Run '...'
-4. See error...
--->
-
-### Specific to a repo? If so which one
-<!-- If this is specific to a repo, please provide the repo URL. -->
+description: File a bug/issue
+title: "[BUG] <title>"
+labels: [bug]
+assignees: 
+  - timheuer
+body:
+- type: textarea
+  attributes:
+    label: Current Behavior
+    description: A concise description of what you're experiencing.
+  validations:
+    required: false
+- type: textarea
+  attributes:
+    label: Expected Behavior
+    description: A concise description of what you expected to happen.
+  validations:
+    required: false
+- type: textarea
+  attributes:
+    label: Steps To Reproduce
+    description: Steps to reproduce the behavior.
+    placeholder: |
+      1. In this environment...
+      2. With this config...
+      3. Run '...'
+      4. See error...
+  validations:
+    required: false
+- type: input
+  attributes:
+    label: Specific repo?
+    description: If this is specific to a repo, please provide the full URL
+    placeholder: |
+      https://github.com/dotnet/aspnetcore
+    validations:
+      required: false
