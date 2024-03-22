@@ -19,7 +19,7 @@ else
             <Tabs>
                 @foreach (var repo in Repositories)
                 {
-                    <RadzenTabsItem Selected="@IsTabSelected(repo.Name)">
+                    <RadzenTabsItem Selected="@IsTabSelected(repo.Name)" style="--rz-tabs-tab-selected-color: #fff;">
                         <Template Context="tab">
                             @repo.Name&nbsp;@RenderCount(repo.Issues.Where(issue => IsVisible(issue)).Count(), tab)
                         </Template>
